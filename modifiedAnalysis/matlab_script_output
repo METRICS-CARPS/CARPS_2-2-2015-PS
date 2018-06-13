@@ -1,0 +1,154 @@
+ans =
+
+"taste attributes are processed about 202 ms earlier than health attributes during the choice process"
+
+
+ans =
+
+"We also find that 30 - 38% of observed individual differences in self-control ability can be explained by differences in the relative speed with which taste and health attributes are processed."
+
+
+ans =
+
+Cursor velocity was significantly greater than zero for normalized time points 1 through 98 (two-sided t-test; p<0.01, uncorrected for multiple comparisons), suggesting that movements were fluid on average.
+
+
+ans =
+
+...excluded from further analysis (mean 16.4% of trials).
+
+
+ans =
+
+For comparison, the mean RT in mouse trials was 1814 ms (S.D. = 524 ms).
+
+
+ans =
+
+Second, we also removed a small fraction of trials in which the mouse trajectory crossed the y-axis more than three times (mean 6.1% of trials per subject; 27 of 28 subjects had at least one such trial).
+
+
+ans =
+
+We found that the two cases led to indistinguishable choice curves (mean logistic slope mouse = -0.37, mean logistic slope keyboard = -0.33; p=0.22, t(27)=-1.25, two-tailed).
+
+
+ans =
+
+Although mean reaction times were longer in the mouse condition (mouse mean = 1814 ms; keyboard mean = 1258 ms; t(27)=4.54, p=0.0001, two-tailed)
+
+
+ans =
+
+the absolute value of the liking rating differences (mouse mean linear regression slope = -0.035; keyboard mean linear regression slope = -0.051; p=0.16, t(27)=1.45, two-tailed).
+
+
+ans =
+
+We found that, across the group, the earliest time at which the value information had a sustained, significant, effect on the trajectories, without ever returning to being not-significant, for the group was t = 59.
+
+
+ans =
+
+SCSRs across the group, and shows that there was substantial variation across subjects (mean = 25%, range: 2-78%).
+
+
+ans =
+
+There were no significant RT differences between challenge and non-challenge trials (challenge mean = 1782 ms; non-challenge mean = 1701 ms; t(27)=0.78, p=0.44, two-tailed)
+
+
+ans =
+
+mouse trajectories were influenced by taste at significantly earlier time slices compared to health (taste: t = 57; health: t = 72; p<0.05 threshold, one-tailed).
+
+
+ans =
+
+We found that health never became a significant influence on the trajectory for 36% of subjects, whereas for taste this happened for 0 subjects
+
+
+ans =
+
+the mean earliest time for a significant effect of health was later than the mean earliest time for taste (mean difference = 7.94, p=0.0383, t(17)=-1.89, one-tailed).
+
+
+ans =
+
+taste information began to influence the choice process about 15% earlier than health information.
+
+
+ans =
+
+onset of health attribute processing by the choice circuitry approximately 202 ms later than the onset for taste.
+
+
+ans =
+
+in the high self-control group, the paths for taste and health were quite similar and became significantly greater than zero at approximately the same time (health: t = 72; taste: t = 63)
+
+**PAPER: In particular, in the high-self-control group, the paths for tastiness and healthfulness were
+quite similar and became significantly greater than zero at approximately the same time (healthfulness: t = 67; tastiness: t = 60).***
+
+ans =
+
+for the low self-control group, the latency at which taste became significant was similar to that of the high self-control group (t = 57), but that for health occurred much later (t = 85).
+
+**PAPER: In contrast, for the low-self-control group, the latency at which tastiness became significant was similar to that of the high-self-control group (t = 56), but the latency for healthfulness occurred much later (t = 85).***
+
+ans =
+
+The normalized time at which taste and health became significant did not differ for high self-control subjects (mean health: t = 75.00; mean taste: t = 72.27; mean difference = -4.30; t(9)=-0.74, p=0.24, one-tailed)
+
+**PAPER: The normalized time at which tastiness and healthfulness became significant did not differ significantly for high-self-control
+subjects (mean healthfulness: t = 69.50; mean tastiness: t = 68.54; mean difference = −2.9), t(9) = −0.46, p = .33 (one-tailed), but they were significantly different in the low-self-control group (mean healthfulness: t = 81.22; mean tastiness: t = 61.35; mean difference = −16), t(8) = −2.5, p = .02 (one-tailed). ***
+
+
+ans =
+
+but they were significantly different in the low self-control group (mean health: t = 82.38; mean taste: t = 63.65; mean difference = -12.50, t(7)=-2.06, p=0.04, one-tailed).
+
+
+ans =
+
+In one case we assumed that, for the problem subjects, health first became significant at t = 102, one time point after the final time point, and estimated the regression using all of the subjects (linear regression slope = 0.005, p=0.0005, R^2=0.38).
+
+
+ans =
+
+In the other case, we simply excluded these subjects, carrying out the regression using only the 64% of subjects for whom health became significant during the trial. This yielded a similar result (linear regression slope = 0.006, p=0.0177, R^2=0.30).
+
+
+ans =
+
+the differences in earliest significant time identified with the previous analysis are highly correlated with those identified with this new method (R^2=0.54, p=0.00054).
+
+
+ans =
+
+Likewise, the alternative measure of the relative earliest times can still significantly predict a sizable fraction of the individual differences in self-control (Fig. 6C; R^2=0.15, p=0.04293).
+
+
+ans =
+
+Together, these results suggest that a sizable fraction of individual differences in dietary self-control, on the order of 30 - 38%
+
+
+ans =
+
+Both attributes were highly significant and, on their own, explained a sizable fraction of the individual differences in self-control (health: p=0.0002, R^2=0.42; taste: p=0.0007, R^2=0.3724).
+
+
+ans =
+
+As shown in Figure 7B, we found that the two variables had a significant and sizable relation (slope = -0.02, p=0.002, R^2=0.4680).
+
+
+ans =
+
+Using this method, we found that the final weight of taste was a significant mediator of tastes time-to-significance, reducing path strength by 72.53%, and making tastes time-to-significance not-significant for predicting SCSR (p=0.47).
+
+
+ans =
+
+This was also true for the health coefficient, reducing path strength by 66.06%, and also making healths time-to-significance non-significant for predicting SCSR (p=0.48).

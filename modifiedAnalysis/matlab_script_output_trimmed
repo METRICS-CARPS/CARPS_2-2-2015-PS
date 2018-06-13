@@ -1,0 +1,44 @@
+
+### EXCLUSIONS -- NOT INCLUDED IN TARGET OUTCOMES - potential source of error?
+ans = ...excluded from further analysis (mean 16.4% of trials).
+
+***PAPER: First, for each subject, mouse trials with reaction times (RTs) greater than two standard deviations above
+their mouse-trial mean were excluded from further analysis (13.3% of all trials). ***
+
+
+
+ans = Second, we also removed a small fraction of trials in which the mouse trajectory crossed the y-axis more than three times (mean 6.1% of trials per subject; 27 of 28 subjects had at least one such trial).
+
+***PAPER: Second, we also removed a small fraction of trials in which the mouse trajectory crossed the y-axis more than three times (a mean of 3.3% of trials per subject; 26 of 28 subjects had at least one
+such trial). ***
+
+
+
+### TARGET OUTCOMES  (same as reported in pilotReport.Rmd)
+
+ans = in the high self-control group, the paths for taste and health were quite similar and became significantly greater than zero at approximately the same time (health: t = 72; taste: t = 63)
+
+**PAPER: In particular, in the high-self-control group, the paths for tastiness and healthfulness were
+quite similar and became significantly greater than zero at approximately the same time (healthfulness: t = 67; tastiness: t = 60).***
+
+
+
+ans = for the low self-control group, the latency at which taste became significant was similar to that of the high self-control group (t = 57), but that for health occurred much later (t = 85).
+
+**PAPER: In contrast, for the low-self-control group, the latency at which tastiness became significant was similar to that of the high-self-control group (t = 56), but the latency for healthfulness occurred much later (t = 85).***
+
+
+
+ans = The normalized time at which taste and health became significant did not differ for high self-control subjects (mean health: t = 75.00; mean taste: t = 72.27; mean difference = -4.30; t(9)=-0.74, p=0.24, one-tailed)
+
+**PAPER: The normalized time at which tastiness and healthfulness became significant did not differ significantly for high-self-control
+subjects (mean healthfulness: t = 69.50; mean tastiness: t = 68.54; mean difference = −2.9), t(9) = −0.46, p = .33 (one-tailed),***
+
+
+
+ans =  but they were significantly different in the low self-control group (mean health: t = 82.38; mean taste: t = 63.65; mean difference = -12.50, t(7)=-2.06, p=0.04, one-tailed).
+
+***PAPER: but they were significantly different in the low-self-control group (mean healthfulness: t = 81.22; mean tastiness: t = 61.35; mean difference = −16), t(8) = −2.5, p = .02 (one-tailed). ***
+
+
+
