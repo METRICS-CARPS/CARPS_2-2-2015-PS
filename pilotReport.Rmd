@@ -25,7 +25,7 @@ completionDate <- NA # copilot insert the date of final report completion (after
 
 #### Methods summary: 
 
-The authors provided extensive code to reproduce the analyses and figures in the manuscript. The code was written in Matlab 2014 and reproduced in Matlab 2015. 
+The authors provided extensive code to reproduce the analyses and figures in the manuscript. The code was written in Matlab 2014 and we conducted our reproducibility attempt in Matlab 2015. 
 
 The following command was run in Matlab to assess the dependncines used:
 ## [fList,pList] = matlab.codetools.requiredFilesAndProducts('code.m');
