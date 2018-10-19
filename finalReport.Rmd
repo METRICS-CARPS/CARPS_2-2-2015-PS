@@ -1,0 +1,306 @@
+--
+title: "CARPS Reproducibility Report"
+output:
+  html_document:
+    toc: true
+    toc_float: true
+---
+
+
+# Report Details
+
+```{r}
+articleID <- "2-2-2015_PS" # insert the article ID code here e.g., "10-3-2015_PS"
+reportType <- 'final' # specify whether this is the 'pilot' report or 'final' report
+pilotNames <- "Bria Long" # insert the pilot's name here e.g., "Tom Hardwicke".  If there are multiple cpilots enter both names in a character string e.g., "Tom Hardwicke, Bob Dylan"
+copilotNames <- "Vivian Zhang" # # insert the co-pilot's name here e.g., "Michael Frank". If there are multiple co-pilots enter both names in a character string e.g., "Tom Hardwicke, Bob Dylan"
+pilotTTC <- NA # insert the pilot's estimated time to complete (in minutes, fine to approximate) e.g., 120
+copilotTTC <- NA # insert the co-pilot's estimated time to complete (in minutes, fine to approximate) e.g., 120
+pilotStartDate <- 06/13/2018 # insert the pilot's start date in US format e.g., as.Date("01/25/18", format = "%m/%d/%y")
+copilotStartDate <- 10/19/2018 # insert the co-pilot's start date in US format e.g., as.Date("01/25/18", format = "%m/%d/%y")
+completionDate <- NA # copilot insert the date of final report completion (after any necessary rounds of author assistance) in US format e.g., as.Date("01/25/18", format = "%m/%d/%y")
+```
+
+------
+
+#### Methods summary: 
+
+The authors provided extensive code to reproduce the analyses and figures in the manuscript. The code was written in Matlab 2014, we conducted our reproducibility attempt in Matlab 2015 and copiloted in Matlab 2018.
+
+The following command was run in Matlab to assess the dependncines used:
+## [fList,pList] = matlab.codetools.requiredFilesAndProducts('code.m');
+Which revealed that the Mapping Toolbox, Matlab, and Statisitcs and Machine Learning toolbox were required.
+The only other file that was required and not provided was a plotting tool (shadedErrorBar.m) which the pilot already had installed from the Matlab file exchange.
+
+The code provided by the authors outputted both the primary sentences and figures in the paper. However, these did not match the numbers provided in the targetOutcomes.md 
+
+------
+
+#### Target outcomes paragraph:
+
+To address whether individual differences in dietary self control were associated with differences in the relative speed at which the healthfulness and tastiness attributes
+were computed, we began by comparing how taste and
+health information were reflected in the mouse trajectories
+for individuals with high versus low self-control, as
+defined using a median split of the SCSR statistic. As
+shown in Figure 5a, we found substantial differences
+across the groups. In particular, in the high-self-control
+group, the paths for tastiness and healthfulness were
+quite similar and became significantly greater than zero
+at approximately the same time (healthfulness: t = 67;
+tastiness: t = 60). In contrast, for the low-self-control
+group, the latency at which tastiness became significant
+was similar to that of the high-self-control group (t = 56),
+but the latency for healthfulness occurred much later (t =
+85). As before, we tested for the significance of these differences
+by estimating at the individual level the earliest
+time at which healthfulness became significantly greater
+than zero and then comparing the distributions. The normalized
+time at which tastiness and healthfulness became
+significant did not differ significantly for high-self-control
+subjects (mean healthfulness: t = 69.50; mean tastiness:
+t = 68.54; mean difference = −2.9), t(9) = −0.46, p = .33
+(one-tailed), but they were significantly different in the
+low-self-control group (mean healthfulness: t = 81.22;
+mean tastiness: t = 61.35; mean difference = −16), t(8) =
+−2.5, p = .02 (one-tailed).
+
+
+```{r global_options, include=FALSE}
+# sets up some formatting options for the R Markdown document
+knitr::opts_chunk$set(echo=TRUE, warning=FALSE, message=FALSE)
+```
+
+# Step 1: Load packages and prepare report object
+
+```{r}
+# load packages
+library(tidyverse) # for data munging
+library(knitr) # for kable table formating
+library(haven) # import and export 'SPSS', 'Stata' and 'SAS' Files
+library(readxl) # import excel files
+library(CARPSreports) # custom report functions
+```
+
+
+```{r}
+# Pilot/copilot: Do not make changes to this code chunk!
+# Prepare report object. This will be updated automatically by the reproCheck function each time values are compared
+reportObject <- data.frame(dummyRow = TRUE, reportedValue = NA, obtainedValue = NA, valueType = NA, percentageError = NA, comparisonOutcome = NA, eyeballCheck = NA)
+```
+# Step 2: Pre-processing and analysis
+
+## Step 2a: Run matlab file provided by authors.
+
+Renamed to author_code.m in modifiedAnalysis folder). Copy and paste outcome sentences from matlab console.
+
+## Step 2b: Rerun matlab file with modified exclusions.
+
+Commented out exclusions that were flagged as optional in the author's code, made modified file author_code_optional_values_commented.m; reran code.  Copy and pasted outcome sentences from matlab console, but did not directly compare values when saw that they also did not match.
+
+# Step 3: Compare values
+## Descriptive statistics
+
+### 1st target outcome 
+PAPER:  in the high-self-control group, the paths for tastiness and healthfulness were quite similar and became significantly greater than zero at approximately the same time (healthfulness: t = 67; tastiness: t = 60).
+
+MATLAB OUTPUT (Raw): in the high self-control group, the paths for taste and health were quite similar and became significantly greater than zero at approximately the same time (health: t = 72; taste: t = 63)
+
+MATLAB OUTPUT (Optional exclusions commented): in the high self-control group, the paths for taste and health were quite similar and became significantly greater than zero at approximately the same time (health: t = 72; taste: t = 66)
+
+COPILOT_MATLAB OUTPUT (Optional exclusions commented): in the high self-control group, the paths for taste and health were quite similar and became significantly greater than zero at approximately the same time (health: t = 72; taste: t = 66)
+
+
+```{r}
+## High self-control 
+# heathfulness
+reportObject <- reproCheck(reportedValue = '67', obtainedValue = 72, valueType = 'mean')
+#tastiness
+reportObject <- reproCheck(reportedValue = '60', obtainedValue = 63, valueType = 'mean')
+
+```
+
+```{r}
+## High self-control 
+#Copilot with optional exclusion commented
+# heathfulness
+reportObject <- reproCheck(reportedValue = '67', obtainedValue = 72, valueType = 'mean')
+#tastiness
+reportObject <- reproCheck(reportedValue = '60', obtainedValue = 66, valueType = 'mean')
+
+```
+
+### 2nd target outcome 
+
+PAPER: for the low-self-control group, the latency at which tastiness became significant was similar to that of the high-self-control group (t = 56), but the latency for healthfulness occurred much later (t = 85).
+
+MATLAB OUTPUT (Raw): for the low self-control group, the latency at which taste became significant was similar to that of the high self-control group (t = 57), but that for health occurred much later (t = 85).
+
+MATLAB OUTPUT (Optional exclusions commented): for the low self-control group, the latency at which taste became significant was similar to that of the high self-control group (t = 58), but that for health occurred much later (t = 88).
+
+COPILOT_MATLAB OUTPUT (Optional exclusions commented): for the low self-control group, the latency at which taste became significant was similar to that of the high self-control group (t = 58), but that for health occurred much later (t = 88).
+
+
+```{r}
+## Low self-control 
+# heathfulness
+reportObject <- reproCheck(reportedValue = '56', obtainedValue = 57, valueType = 'mean')
+#tastiness
+reportObject <- reproCheck(reportedValue = '85', obtainedValue = 85, valueType = 'mean')
+```
+
+```{r}
+## Low self-control
+# Copilot with option exclusion commented
+# heathfulness
+reportObject <- reproCheck(reportedValue = '56', obtainedValue = 58, valueType = 'mean')
+#tastiness
+reportObject <- reproCheck(reportedValue = '85', obtainedValue = 88, valueType = 'mean')
+```
+
+## Inferential statistics
+
+### 3rd target outcome 
+
+PAPER:  The normalized time at which tastiness and healthfulness became significant did not differ significantly for high-self-control subjects (mean healthfulness: t = 69.50; mean tastiness: t = 68.54; mean difference = −2.9), t(9) = −0.46, p = .33 (one-tailed).
+
+MATLAB OUTPUT (Raw): The normalized time at which taste and health became significant did not differ for high self-control subjects (mean health: t = 75.00; mean taste: t = 72.27; mean difference = -4.30; t(9)=-0.74, p=0.24, one-tailed)
+
+MATLAB OUTPUT (Optional exclusions commented): The normalized time at which taste and health became significant did not differ for high self-control subjects (mean health: t = 74.30; mean taste: t = 69.00; mean difference = -6.80; t(9)=-1.67, p=0.06, one-tailed)
+
+COPILOT_MATLAB OUTPUT (Optional exclusions commented): The normalized time at which taste and health became significant did not differ for high self-control subjects (mean health: t = 74.30; mean taste: t = 69.00; mean difference = -6.80; t(9)=-1.67, p=0.06, one-tailed)
+
+
+```{r}
+## High self-control statistics
+# heathfulness
+reportObject <- reproCheck(reportedValue = '69.50', obtainedValue = 75.00, valueType = 'mean')
+
+# tastiness
+reportObject <- reproCheck(reportedValue = '68.54', obtainedValue = 72.27, valueType = 'mean')
+
+# t-test values
+reportObject <- reproCheck(reportedValue = '9', obtainedValue = 9, valueType = 'df')
+reportObject <- reproCheck(reportedValue = '-.46', obtainedValue = -.74, valueType = 't')
+reportObject <- reproCheck(reportedValue = '.33', obtainedValue = .24, valueType = 'p')
+```
+
+```{r}
+## High self-control statistics
+# Copilot with optional exclusion commented
+# heathfulness
+reportObject <- reproCheck(reportedValue = '69.50', obtainedValue = 74.30, valueType = 'mean')
+
+# tastiness
+reportObject <- reproCheck(reportedValue = '68.54', obtainedValue = 69.00, valueType = 'mean')
+
+# t-test values
+reportObject <- reproCheck(reportedValue = '9', obtainedValue = 9, valueType = 'df')
+reportObject <- reproCheck(reportedValue = '-.46', obtainedValue = -1.67, valueType = 't')
+reportObject <- reproCheck(reportedValue = '.33', obtainedValue = 0.06, valueType = 'p')
+```
+
+### 4th target outcome 
+
+PAPER: but they were significantly different in the low-self-control group (mean healthfulness: t = 81.22; mean tastiness: t = 61.35; mean difference = −16), t(8) = −2.5, p = .02 (one-tailed).
+
+MATLAB OUTPUT (Raw): but they were significantly different in the low self-control group (mean health: t = 82.38; mean taste: t = 63.65; mean difference = -12.50, t(7)=-2.06, p=0.04, one-tailed).
+
+MATLAB OUPUT (Optional exclusions commented): but they were significantly different in the low self-control group (mean health: t = 84.50; mean taste: t = 67.35; mean difference = -15.70, t(9)=-2.84, p=0.01, one-tailed).
+
+COPILOT_MATLAB OUPUT (Optional exclusions commented): but they were significantly different in the low self-control group (mean health: t = 84.50; mean taste: t = 67.35; mean difference = -15.70, t(9)=-2.84, p=0.01, one-tailed).
+
+```{r}
+## High self-control statistics
+# heathfulness
+reportObject <- reproCheck(reportedValue = '81.22', obtainedValue = 82.38, valueType = 'mean')
+
+# tastiness
+reportObject <- reproCheck(reportedValue = '61.35', obtainedValue = 63.65, valueType = 'mean')
+
+# t-test values
+reportObject <- reproCheck(reportedValue = '8', obtainedValue = 7, valueType = 'df')
+reportObject <- reproCheck(reportedValue = '-2.5', obtainedValue = -2.06, valueType = 't')
+reportObject <- reproCheck(reportedValue = '.02', obtainedValue = .04, valueType = 'p')
+```
+
+```{r}
+## High self-control statistics
+# Copilot with optional exclusion commented
+# heathfulness
+reportObject <- reproCheck(reportedValue = '81.22', obtainedValue = 84.50, valueType = 'mean')
+
+# tastiness
+reportObject <- reproCheck(reportedValue = '61.35', obtainedValue = 67.35, valueType = 'mean')
+
+# t-test values
+reportObject <- reproCheck(reportedValue = '8', obtainedValue = 9, valueType = 'df')
+reportObject <- reproCheck(reportedValue = '-2.5', obtainedValue = -2.84, valueType = 't')
+reportObject <- reproCheck(reportedValue = '.02', obtainedValue = .01, valueType = 'p')
+```
+
+# Step 4: Conclusion
+
+The exact numerical output and figures generated by code.m and the data provided do not match those provided in the paper. We suspect that this might have something to do with the way that different data were excluded from anlayses. Most of the values do not match, with one exception, with a variety of both minor and major numerical errors. For example, we noticed that there were certian optional exclusion criterion that were included in the main analyses (marked with **optional** in code.m). However, commenting out these optional exclusion criterion did not allow us to reproduce the figures or values in the main paper; these values are also reported above in the report but not directly compared to the reported values in the paper for brevity. 
+
+
+```{r}
+Author_Assistance = FALSE # was author assistance provided? (if so, enter TRUE)
+
+Insufficient_Information_Errors <- 0 # how many discrete insufficient information issues did you encounter?
+
+# Assess the causal locus (discrete reproducibility issues) of any reproducibility errors. Note that there doesn't necessarily have to be a one-to-one correspondance between discrete reproducibility issues and reproducibility errors. For example, it could be that the original article neglects to mention that a Greenhouse-Geisser correct was applied to ANOVA outcomes. This might result in multiple reproducibility errors, but there is a single causal locus (discrete reproducibility issue).
+
+locus_typo <- NA # how many discrete issues did you encounter that related to typographical errors?
+locus_specification <- NA # how many discrete issues did you encounter that related to incomplete, incorrect, or unclear specification of the original analyses?
+locus_analysis <- NA # how many discrete issues did you encounter that related to errors in the authors' original analyses?
+locus_data <- NA # how many discrete issues did you encounter that related to errors in the data files shared by the authors?
+locus_unidentified <- NA # how many discrete issues were there for which you could not identify the cause
+
+Affects_Conclusion <- NA # Do any reproducibility issues encounter appear to affect the conclusions made in the original article? TRUE, FALSE, or NA. This is a subjective judgement, but you should taking into account multiple factors, such as the presence/absence of decision errors, the number of target outcomes that could not be reproduced, the type of outcomes that could or could not be reproduced, the difference in magnitude of effect sizes, and the predictions of the specific hypothesis under scrutiny.
+```
+
+[PILOT/COPILOT DOD NOT EDIT THE CODE CHUNK BELOW]
+
+```{r}
+reportObject <- reportObject %>%
+  filter(dummyRow == FALSE) %>% # remove the dummy row
+  select(-dummyRow) %>% # remove dummy row designation
+  mutate(articleID = articleID) %>% # add variables to report 
+  select(articleID, everything()) # make articleID first column
+
+# decide on final outcome
+if(any(reportObject$comparisonOutcome != "MATCH") | Insufficient_Information_Errors > 0){
+  finalOutcome <- "Failure without author assistance"
+  if(Author_Assistance == T){
+    finalOutcome <- "Failure despite author assistance"
+  }
+}else{
+  finalOutcome <- "Success without author assistance"
+  if(Author_Assistance == T){
+    finalOutcome <- "Success with author assistance"
+  }
+}
+
+# collate report extra details
+reportExtras <- data.frame(articleID, pilotNames, copilotNames, pilotTTC, copilotTTC, pilotStartDate, copilotStartDate, completionDate, Author_Assistance, finalOutcome, Insufficient_Information_Errors, locus_typo, locus_specification, locus_analysis, locus_data, locus_unidentified)
+
+# save report objects
+if(reportType == "pilot"){
+  write_csv(reportObject, "pilotReportDetailed.csv")
+  write_csv(reportExtras, "pilotReportExtras.csv")
+}
+
+if(reportType == "final"){
+  write_csv(reportObject, "finalReportDetailed.csv")
+  write_csv(reportExtras, "finalReportExtras.csv")
+}
+```
+
+# Session information
+
+[This function will output information about the package versions used in this report:]
+
+```{r session_info, include=TRUE, echo=TRUE, results='markup'}
+devtools::session_info()
+```
