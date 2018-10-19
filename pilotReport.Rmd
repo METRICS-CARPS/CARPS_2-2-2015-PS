@@ -24,15 +24,14 @@ completionDate <- NA # copilot insert the date of final report completion (after
 ------
 
 #### Methods summary: 
+In this task, participants continuously indicated which of two foods they preferredusing their mouse; these foods varied in both healthiness and tastiness. The authors then conducted trajectory analysis using linear regressions for every subject to estimate the degree to which the trajectories where influenced by the food attributes at every time point; the coefficients were then used to assess the earliest time points at which the mouse trajectories were influenced by these attributes for each subject, and statistical tests were performed over these time points.
 
-The authors provided extensive code to reproduce the analyses and figures in the manuscript. The code was written in Matlab 2014 and reproduced in Matlab 2015. 
+The authors provided extensive code to reproduce the analyses and figures in the manuscript. The code provided by the authors also outputted both the primary sentences and figures in the paper. However, these did not match the numbers provided in the targetOutcomes.md taken from the main manuscript. We noticed that there were some "optional" exclusions in the main analysis file. As such, we ran the codeboth when excluding these optional trials and when including them; both versions are reported below; neither matched the values in the main manuscript.
 
-The following command was run in Matlab to assess the dependncines used:
+We note that the author's code was written in Matlab 2014; we attempted to reproduce it in Matlab 2015/Matlab 2018. The following command was run in Matlab to assess the dependncines used:
 ## [fList,pList] = matlab.codetools.requiredFilesAndProducts('code.m');
-Which revealed that the Mapping Toolbox, Matlab, and Statisitcs and Machine Learning toolbox were required.
+The pilot/co-pilot that the Mapping Toolbox, Matlab, and Statisitcs and Machine Learning toolbox were required.
 The only other file that was required and not provided was a plotting tool (shadedErrorBar.m) which the pilot already had installed from the Matlab file exchange.
-
-The code provided by the authors outputted both the primary sentences and figures in the paper. However, these did not match the numbers provided in the targetOutcomes.md 
 
 ------
 
@@ -92,7 +91,7 @@ reportObject <- data.frame(dummyRow = TRUE, reportedValue = NA, obtainedValue = 
 
 ## Step 2a: Run matlab file provided by authors.
 
-Renamed to author_code.m in modifiedAnalysis folder). Copy and paste outcome sentences from matlab console.
+Renamed to author_code_optional_exclusions.m in modifiedAnalysis folder). Copy and paste outcome sentences from matlab console.
 
 ## Step 2b: Rerun matlab file with modified exclusions.
 
@@ -104,7 +103,7 @@ Commented out exclusions that were flagged as optional in the author's code, mad
 ### 1st target outcome 
 PAPER:  in the high-self-control group, the paths for tastiness and healthfulness were quite similar and became significantly greater than zero at approximately the same time (healthfulness: t = 67; tastiness: t = 60).
 
-MATLAB OUTPUT (Raw): in the high self-control group, the paths for taste and health were quite similar and became significantly greater than zero at approximately the same time (health: t = 72; taste: t = 63)
+MATLAB OUTPUT (Code provided by authors): in the high self-control group, the paths for taste and health were quite similar and became significantly greater than zero at approximately the same time (health: t = 72; taste: t = 63)
 
 MATLAB OUTPUT (Optional exclusions commented): in the high self-control group, the paths for taste and health were quite similar and became significantly greater than zero at approximately the same time (health: t = 72; taste: t = 66)
 
@@ -122,13 +121,13 @@ reportObject <- reproCheck(reportedValue = '60', obtainedValue = 63, valueType =
 
 PAPER: for the low-self-control group, the latency at which tastiness became significant was similar to that of the high-self-control group (t = 56), but the latency for healthfulness occurred much later (t = 85).
 
-MATLAB OUTPUT (Raw): for the low self-control group, the latency at which taste became significant was similar to that of the high self-control group (t = 57), but that for health occurred much later (t = 85).
+MATLAB OUTPUT (Code provided by authors): for the low self-control group, the latency at which taste became significant was similar to that of the high self-control group (t = 57), but that for health occurred much later (t = 85).
 
 MATLAB OUTPUT (Optional exclusions commented): for the low self-control group, the latency at which taste became significant was similar to that of the high self-control group (t = 58), but that for health occurred much later (t = 88).
 
 
-
 ```{r}
+## Raw output (optional exclusions NOT commented)
 ## Low self-control 
 # heathfulness
 reportObject <- reproCheck(reportedValue = '56', obtainedValue = 57, valueType = 'mean')
@@ -142,7 +141,7 @@ reportObject <- reproCheck(reportedValue = '85', obtainedValue = 85, valueType =
 
 PAPER:  The normalized time at which tastiness and healthfulness became significant did not differ significantly for high-self-control subjects (mean healthfulness: t = 69.50; mean tastiness: t = 68.54; mean difference = −2.9), t(9) = −0.46, p = .33 (one-tailed).
 
-MATLAB OUTPUT (Raw): The normalized time at which taste and health became significant did not differ for high self-control subjects (mean health: t = 75.00; mean taste: t = 72.27; mean difference = -4.30; t(9)=-0.74, p=0.24, one-tailed)
+MATLAB OUTPUT (Code provided by authors): The normalized time at which taste and health became significant did not differ for high self-control subjects (mean health: t = 75.00; mean taste: t = 72.27; mean difference = -4.30; t(9)=-0.74, p=0.24, one-tailed)
 
 MATLAB OUTPUT (Optional exclusions commented): The normalized time at which taste and health became significant did not differ for high self-control subjects (mean health: t = 74.30; mean taste: t = 69.00; mean difference = -6.80; t(9)=-1.67, p=0.06, one-tailed)
 
@@ -163,9 +162,9 @@ reportObject <- reproCheck(reportedValue = '.33', obtainedValue = .24, valueType
 
 ### 4th target outcome 
 
-PAPER: but they were significantly different in the low-self-control group (mean healthfulness: t = 81.22; mean tastiness: t = 61.35; mean difference = −16), t(8) = −2.5, p = .02 (one-tailed).
+PAPER: ...but they were significantly different in the low-self-control group (mean healthfulness: t = 81.22; mean tastiness: t = 61.35; mean difference = −16), t(8) = −2.5, p = .02 (one-tailed).
 
-MATLAB OUTPUT (Raw): but they were significantly different in the low self-control group (mean health: t = 82.38; mean taste: t = 63.65; mean difference = -12.50, t(7)=-2.06, p=0.04, one-tailed).
+MATLAB OUTPUT (Code provided by authors): but they were significantly different in the low self-control group (mean health: t = 82.38; mean taste: t = 63.65; mean difference = -12.50, t(7)=-2.06, p=0.04, one-tailed).
 
 MATLAB OUPUT (Optional exclusions commented): but they were significantly different in the low self-control group (mean health: t = 84.50; mean taste: t = 67.35; mean difference = -15.70, t(9)=-2.84, p=0.01, one-tailed).
 
