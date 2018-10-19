@@ -1,1 +1,1 @@
-[fList,pList] = matlab.codetools.requiredFilesAndProducts('code.m');
+[fList,pList] = matlab.codetools.requiredFilesAndProducts('author_code.m');
