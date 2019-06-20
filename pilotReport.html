@@ -93,8 +93,14 @@ img {
 .tabbed-pane {
   padding-top: 12px;
 }
+.html-widget {
+  margin-bottom: 20px;
+}
 button.code-folding-btn:focus {
   outline: none;
+}
+summary {
+  display: list-item;
 }
 </style>
 
@@ -103,14 +109,74 @@ button.code-folding-btn:focus {
 <div class="container-fluid main-container">
 
 <!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
 <script>
 $(document).ready(function () {
   window.buildTabsets("TOC");
 });
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
 </script>
 
 <!-- code folding -->
-
 
 
 
@@ -234,9 +300,9 @@ completionDate &lt;- NA # copilot insert the date of final report completion (af
 <hr />
 <div id="methods-summary" class="section level4">
 <h4>Methods summary:</h4>
-<p>The authors provided extensive code to reproduce the analyses and figures in the manuscript. The code was written in Matlab 2014 and reproduced in Matlab 2015.</p>
-<p>The following command was run in Matlab to assess the dependncines used: ## [fList,pList] = matlab.codetools.requiredFilesAndProducts(‘code.m’); Which revealed that the Mapping Toolbox, Matlab, and Statisitcs and Machine Learning toolbox were required. The only other file that was required and not provided was a plotting tool (shadedErrorBar.m) which the pilot already had installed from the Matlab file exchange.</p>
-<p>The code provided by the authors outputted both the primary sentences and figures in the paper. However, these did not match the numbers provided in the targetOutcomes.md</p>
+<p>In this task, participants continuously indicated which of two foods they preferredusing their mouse; these foods varied in both healthiness and tastiness. The authors then conducted trajectory analysis using linear regressions for every subject to estimate the degree to which the trajectories where influenced by the food attributes at every time point; the coefficients were then used to assess the earliest time points at which the mouse trajectories were influenced by these attributes for each subject, and statistical tests were performed over these time points.</p>
+<p>The authors provided extensive code to reproduce the analyses and figures in the manuscript. The code provided by the authors also outputted both the primary sentences and figures in the paper. However, these did not match the numbers provided in the targetOutcomes.md taken from the main manuscript. We noticed that there were some “optional” exclusions in the main analysis file. As such, we ran the codeboth when excluding these optional trials and when including them; both versions are reported below; neither matched the values in the main manuscript.</p>
+<p>We note that the author’s code was written in Matlab 2014; we attempted to reproduce it in Matlab 2015/Matlab 2018. The following command was run in Matlab to assess the dependncines used: ## [fList,pList] = matlab.codetools.requiredFilesAndProducts(‘code.m’); The pilot/co-pilot that the Mapping Toolbox, Matlab, and Statisitcs and Machine Learning toolbox were required. The only other file that was required and not provided was a plotting tool (shadedErrorBar.m) which the pilot already had installed from the Matlab file exchange.</p>
 <hr />
 </div>
 <div id="target-outcomes-paragraph" class="section level4">
@@ -260,7 +326,7 @@ reportObject &lt;- data.frame(dummyRow = TRUE, reportedValue = NA, obtainedValue
 <h1>Step 2: Pre-processing and analysis</h1>
 <div id="step-2a-run-matlab-file-provided-by-authors." class="section level2">
 <h2>Step 2a: Run matlab file provided by authors.</h2>
-<p>Renamed to author_code.m in modifiedAnalysis folder). Copy and paste outcome sentences from matlab console.</p>
+<p>Renamed to author_code_optional_exclusions.m in modifiedAnalysis folder). Copy and paste outcome sentences from matlab console.</p>
 </div>
 <div id="step-2b-rerun-matlab-file-with-modified-exclusions." class="section level2">
 <h2>Step 2b: Rerun matlab file with modified exclusions.</h2>
@@ -274,25 +340,39 @@ reportObject &lt;- data.frame(dummyRow = TRUE, reportedValue = NA, obtainedValue
 <div id="st-target-outcome" class="section level3">
 <h3>1st target outcome</h3>
 <p>PAPER: in the high-self-control group, the paths for tastiness and healthfulness were quite similar and became significantly greater than zero at approximately the same time (healthfulness: t = 67; tastiness: t = 60).</p>
-<p>MATLAB OUTPUT (Raw): in the high self-control group, the paths for taste and health were quite similar and became significantly greater than zero at approximately the same time (health: t = 72; taste: t = 63)</p>
+<p>MATLAB OUTPUT (Code provided by authors): in the high self-control group, the paths for taste and health were quite similar and became significantly greater than zero at approximately the same time (health: t = 72; taste: t = 63)</p>
 <p>MATLAB OUTPUT (Optional exclusions commented): in the high self-control group, the paths for taste and health were quite similar and became significantly greater than zero at approximately the same time (health: t = 72; taste: t = 66)</p>
-<pre class="r"><code>## High self-control 
+<p>MATLAB OUTPUT (Optional exclusions commented): ’n the high-self-control group, the paths for tastiness and healthfulness were quite similar and became significantly greater than zero at approximately the same time (healthfulness: t = 67; tastiness: t = 60).</p>
+<pre class="r"><code>## Original provided code
+## High self-control 
 # heathfulness
-reportObject &lt;- reproCheck(reportedValue = '67', obtainedValue = 72, valueType = 'mean')</code></pre>
-<pre><code>## [1] &quot;MINOR_ERROR for mean. The reported value (67) and the obtained value (72) differed by 7.46%. NB obtained value was rounded to 0 decimal places.&quot;</code></pre>
+# reportObject &lt;- reproCheck(reportedValue = '67', obtainedValue = 72, valueType = 'mean')
+#tastiness
+# reportObject &lt;- reproCheck(reportedValue = '60', obtainedValue = 63, valueType = 'mean')
+
+## Corrected code
+reportObject &lt;- reproCheck(reportedValue = '67', obtainedValue = 67, valueType = 'mean')</code></pre>
+<pre><code>## [1] &quot;MATCH for mean. The reported value (67) and the obtained value (67) differed by 0%. NB obtained value was rounded to 0 decimal places.&quot;</code></pre>
 <pre class="r"><code>#tastiness
-reportObject &lt;- reproCheck(reportedValue = '60', obtainedValue = 63, valueType = 'mean')</code></pre>
-<pre><code>## [1] &quot;MINOR_ERROR for mean. The reported value (60) and the obtained value (63) differed by 5%. NB obtained value was rounded to 0 decimal places.&quot;</code></pre>
+reportObject &lt;- reproCheck(reportedValue = '60', obtainedValue = 60, valueType = 'mean')</code></pre>
+<pre><code>## [1] &quot;MATCH for mean. The reported value (60) and the obtained value (60) differed by 0%. NB obtained value was rounded to 0 decimal places.&quot;</code></pre>
 </div>
 <div id="nd-target-outcome" class="section level3">
 <h3>2nd target outcome</h3>
 <p>PAPER: for the low-self-control group, the latency at which tastiness became significant was similar to that of the high-self-control group (t = 56), but the latency for healthfulness occurred much later (t = 85).</p>
-<p>MATLAB OUTPUT (Raw): for the low self-control group, the latency at which taste became significant was similar to that of the high self-control group (t = 57), but that for health occurred much later (t = 85).</p>
+<p>MATLAB OUTPUT (Code provided by authors): for the low self-control group, the latency at which taste became significant was similar to that of the high self-control group (t = 57), but that for health occurred much later (t = 85).</p>
 <p>MATLAB OUTPUT (Optional exclusions commented): for the low self-control group, the latency at which taste became significant was similar to that of the high self-control group (t = 58), but that for health occurred much later (t = 88).</p>
-<pre class="r"><code>## Low self-control 
+<p>MATLAB OUTPUT (Corrected code): In contrast, for the low-self-control group, the latency at which tastiness became significant was similar to that of the high-self-control group (t = 56), but the latency for healthfulness occurred much later (t = 85).’</p>
+<pre class="r"><code>## Raw output (optional exclusions NOT commented)
+## Low self-control 
 # heathfulness
-reportObject &lt;- reproCheck(reportedValue = '56', obtainedValue = 57, valueType = 'mean')</code></pre>
-<pre><code>## [1] &quot;MINOR_ERROR for mean. The reported value (56) and the obtained value (57) differed by 1.79%. NB obtained value was rounded to 0 decimal places.&quot;</code></pre>
+# reportObject &lt;- reproCheck(reportedValue = '56', obtainedValue = 57, valueType = 'mean')
+#tastiness
+# reportObject &lt;- reproCheck(reportedValue = '85', obtainedValue = 85, valueType = 'mean')
+
+## Corrected code
+reportObject &lt;- reproCheck(reportedValue = '56', obtainedValue = 56, valueType = 'mean')</code></pre>
+<pre><code>## [1] &quot;MATCH for mean. The reported value (56) and the obtained value (56) differed by 0%. NB obtained value was rounded to 0 decimal places.&quot;</code></pre>
 <pre class="r"><code>#tastiness
 reportObject &lt;- reproCheck(reportedValue = '85', obtainedValue = 85, valueType = 'mean')</code></pre>
 <pre><code>## [1] &quot;MATCH for mean. The reported value (85) and the obtained value (85) differed by 0%. NB obtained value was rounded to 0 decimal places.&quot;</code></pre>
@@ -303,49 +383,83 @@ reportObject &lt;- reproCheck(reportedValue = '85', obtainedValue = 85, valueTyp
 <div id="rd-target-outcome" class="section level3">
 <h3>3rd target outcome</h3>
 <p>PAPER: The normalized time at which tastiness and healthfulness became significant did not differ significantly for high-self-control subjects (mean healthfulness: t = 69.50; mean tastiness: t = 68.54; mean difference = −2.9), t(9) = −0.46, p = .33 (one-tailed).</p>
-<p>MATLAB OUTPUT (Raw): The normalized time at which taste and health became significant did not differ for high self-control subjects (mean health: t = 75.00; mean taste: t = 72.27; mean difference = -4.30; t(9)=-0.74, p=0.24, one-tailed)</p>
+<p>MATLAB OUTPUT (Code provided by authors): The normalized time at which taste and health became significant did not differ for high self-control subjects (mean health: t = 75.00; mean taste: t = 72.27; mean difference = -4.30; t(9)=-0.74, p=0.24, one-tailed)</p>
 <p>MATLAB OUTPUT (Optional exclusions commented): The normalized time at which taste and health became significant did not differ for high self-control subjects (mean health: t = 74.30; mean taste: t = 69.00; mean difference = -6.80; t(9)=-1.67, p=0.06, one-tailed)</p>
+<p>MATLAB OUTPUT (Corrected code): ’The normalized time at which tastiness and healthfulness became significant did not differ significantly for high-self-control subjects (mean healthfulness: t = 69.50; mean tastiness: t = 68.55; mean difference = -2.9, t(9) = -0.46, p = 0.33 (one-tailed),</p>
 <pre class="r"><code>## High self-control statistics
+# # heathfulness
+# reportObject &lt;- reproCheck(reportedValue = '69.50', obtainedValue = 75.00, valueType = 'mean')
+# 
+# # tastiness
+# reportObject &lt;- reproCheck(reportedValue = '68.54', obtainedValue = 72.27, valueType = 'mean')
+# 
+# # t-test values
+# reportObject &lt;- reproCheck(reportedValue = '9', obtainedValue = 9, valueType = 'df')
+# reportObject &lt;- reproCheck(reportedValue = '-.46', obtainedValue = -.74, valueType = 't')
+# reportObject &lt;- reproCheck(reportedValue = '.33', obtainedValue = .24, valueType = 'p')
+
+## Corrected code
 # heathfulness
-reportObject &lt;- reproCheck(reportedValue = '69.50', obtainedValue = 75.00, valueType = 'mean')</code></pre>
-<pre><code>## [1] &quot;MINOR_ERROR for mean. The reported value (69.5) and the obtained value (75) differed by 7.91%. NB obtained value was rounded to 2 decimal places.&quot;</code></pre>
+reportObject &lt;- reproCheck(reportedValue = '69.50', obtainedValue = 69.50, valueType = 'mean')</code></pre>
+<pre><code>## [1] &quot;MATCH for mean. The reported value (69.5) and the obtained value (69.5) differed by 0%. NB obtained value was rounded to 2 decimal places.&quot;</code></pre>
 <pre class="r"><code># tastiness
-reportObject &lt;- reproCheck(reportedValue = '68.54', obtainedValue = 72.27, valueType = 'mean')</code></pre>
-<pre><code>## [1] &quot;MINOR_ERROR for mean. The reported value (68.54) and the obtained value (72.27) differed by 5.44%. NB obtained value was rounded to 2 decimal places.&quot;</code></pre>
+reportObject &lt;- reproCheck(reportedValue = '68.54', obtainedValue = 68.55, valueType = 'mean')</code></pre>
+<pre><code>## [1] &quot;MINOR_ERROR for mean. The reported value (68.54) and the obtained value (68.55) differed by 0.01%. NB obtained value was rounded to 2 decimal places.&quot;</code></pre>
 <pre class="r"><code># t-test values
 reportObject &lt;- reproCheck(reportedValue = '9', obtainedValue = 9, valueType = 'df')</code></pre>
 <pre><code>## [1] &quot;MATCH for df. The reported value (9) and the obtained value (9) differed by 0%. NB obtained value was rounded to 0 decimal places.&quot;</code></pre>
-<pre class="r"><code>reportObject &lt;- reproCheck(reportedValue = '-.46', obtainedValue = -.74, valueType = 't')</code></pre>
-<pre><code>## [1] &quot;MAJOR_ERROR for t. The reported value (-0.46) and the obtained value (-0.74) differed by 60.87%. NB obtained value was rounded to 2 decimal places.&quot;</code></pre>
-<pre class="r"><code>reportObject &lt;- reproCheck(reportedValue = '.33', obtainedValue = .24, valueType = 'p')</code></pre>
-<pre><code>## [1] &quot;MAJOR_ERROR for p. The reported value (0.33) and the obtained value (0.24) differed by 27.27%. NB obtained value was rounded to 2 decimal places.&quot;</code></pre>
+<pre class="r"><code>reportObject &lt;- reproCheck(reportedValue = '-.46', obtainedValue = -.46, valueType = 't')</code></pre>
+<pre><code>## [1] &quot;MATCH for t. The reported value (-0.46) and the obtained value (-0.46) differed by 0%. NB obtained value was rounded to 2 decimal places.&quot;</code></pre>
+<pre class="r"><code>reportObject &lt;- reproCheck(reportedValue = '.33', obtainedValue = .33, valueType = 'p')</code></pre>
+<pre><code>## [1] &quot;MATCH for p. The reported value (0.33) and the obtained value (0.33) differed by 0%. NB obtained value was rounded to 2 decimal places.&quot;</code></pre>
 </div>
 <div id="th-target-outcome" class="section level3">
 <h3>4th target outcome</h3>
-<p>PAPER: but they were significantly different in the low-self-control group (mean healthfulness: t = 81.22; mean tastiness: t = 61.35; mean difference = −16), t(8) = −2.5, p = .02 (one-tailed).</p>
-<p>MATLAB OUTPUT (Raw): but they were significantly different in the low self-control group (mean health: t = 82.38; mean taste: t = 63.65; mean difference = -12.50, t(7)=-2.06, p=0.04, one-tailed).</p>
+<p>PAPER: …but they were significantly different in the low-self-control group (mean healthfulness: t = 81.22; mean tastiness: t = 61.35; mean difference = −16), t(8) = −2.5, p = .02 (one-tailed).</p>
+<p>MATLAB OUTPUT (Code provided by authors): but they were significantly different in the low self-control group (mean health: t = 82.38; mean taste: t = 63.65; mean difference = -12.50, t(7)=-2.06, p=0.04, one-tailed).</p>
 <p>MATLAB OUPUT (Optional exclusions commented): but they were significantly different in the low self-control group (mean health: t = 84.50; mean taste: t = 67.35; mean difference = -15.70, t(9)=-2.84, p=0.01, one-tailed).</p>
+<p>MATLAB OUTPUT (Corrected code): but they were significantly different in the low-self-control group (mean healthfulness: t = 81.22; mean tastiness: t = 61.35; mean difference = -16), t(8) = -2.5, p = 0.02 (one-tailed)’</p>
 <pre class="r"><code>## High self-control statistics
 # heathfulness
-reportObject &lt;- reproCheck(reportedValue = '81.22', obtainedValue = 75.00, valueType = 'mean')</code></pre>
-<pre><code>## [1] &quot;MINOR_ERROR for mean. The reported value (81.22) and the obtained value (75) differed by 7.66%. NB obtained value was rounded to 2 decimal places.&quot;</code></pre>
+# reportObject &lt;- reproCheck(reportedValue = '81.22', obtainedValue = 75.00, valueType = 'mean')
+# 
+# # tastiness
+# reportObject &lt;- reproCheck(reportedValue = '61.35', obtainedValue = 72.27, valueType = 'mean')
+# 
+# # t-test values
+# reportObject &lt;- reproCheck(reportedValue = '8', obtainedValue = 7, valueType = 'df')
+# reportObject &lt;- reproCheck(reportedValue = '-2.5', obtainedValue = -2.06, valueType = 't')
+# reportObject &lt;- reproCheck(reportedValue = '.02', obtainedValue = .04, valueType = 'p')
+
+
+## Corrected code
+reportObject &lt;- reproCheck(reportedValue = '81.22', obtainedValue = 81.22, valueType = 'mean')</code></pre>
+<pre><code>## [1] &quot;MATCH for mean. The reported value (81.22) and the obtained value (81.22) differed by 0%. NB obtained value was rounded to 2 decimal places.&quot;</code></pre>
 <pre class="r"><code># tastiness
-reportObject &lt;- reproCheck(reportedValue = '61.35', obtainedValue = 72.27, valueType = 'mean')</code></pre>
-<pre><code>## [1] &quot;MAJOR_ERROR for mean. The reported value (61.35) and the obtained value (72.27) differed by 17.8%. NB obtained value was rounded to 2 decimal places.&quot;</code></pre>
+reportObject &lt;- reproCheck(reportedValue = '61.35', obtainedValue = 61.35, valueType = 'mean')</code></pre>
+<pre><code>## [1] &quot;MATCH for mean. The reported value (61.35) and the obtained value (61.35) differed by 0%. NB obtained value was rounded to 2 decimal places.&quot;</code></pre>
 <pre class="r"><code># t-test values
-reportObject &lt;- reproCheck(reportedValue = '8', obtainedValue = 7, valueType = 'df')</code></pre>
-<pre><code>## [1] &quot;MAJOR_ERROR for df. The reported value (8) and the obtained value (7) differed by 12.5%. NB obtained value was rounded to 0 decimal places.&quot;</code></pre>
-<pre class="r"><code>reportObject &lt;- reproCheck(reportedValue = '-2.5', obtainedValue = -2.06, valueType = 't')</code></pre>
-<pre><code>## [1] &quot;MAJOR_ERROR for t. The reported value (-2.5) and the obtained value (-2.1) differed by 16%. NB obtained value was rounded to 1 decimal places.&quot;</code></pre>
-<pre class="r"><code>reportObject &lt;- reproCheck(reportedValue = '.02', obtainedValue = .04, valueType = 'p')</code></pre>
-<pre><code>## [1] &quot;MAJOR_ERROR for p. The reported value (0.02) and the obtained value (0.04) differed by 100%. NB obtained value was rounded to 2 decimal places.&quot;</code></pre>
+reportObject &lt;- reproCheck(reportedValue = '8', obtainedValue =8, valueType = 'df')</code></pre>
+<pre><code>## [1] &quot;MATCH for df. The reported value (8) and the obtained value (8) differed by 0%. NB obtained value was rounded to 0 decimal places.&quot;</code></pre>
+<pre class="r"><code>reportObject &lt;- reproCheck(reportedValue = '-2.5', obtainedValue = -2.5, valueType = 't')</code></pre>
+<pre><code>## [1] &quot;MATCH for t. The reported value (-2.5) and the obtained value (-2.5) differed by 0%. NB obtained value was rounded to 1 decimal places.&quot;</code></pre>
+<pre class="r"><code>reportObject &lt;- reproCheck(reportedValue = '.02', obtainedValue = .02, valueType = 'p')</code></pre>
+<pre><code>## [1] &quot;MATCH for p. The reported value (0.02) and the obtained value (0.02) differed by 0%. NB obtained value was rounded to 2 decimal places.&quot;</code></pre>
 </div>
 </div>
 </div>
 <div id="step-4-conclusion" class="section level1">
 <h1>Step 4: Conclusion</h1>
-<p>The exact numerical output and figures generated by code.m and the data provided do not match those provided in the paper. We suspect that this might have something to do with the way that different data were excluded from anlayses. Most of the values do not match, with one exception, with a variety of both minor and major numerical errors. For example, we noticed that there were certian optional exclusion criterion that were included in the main analyses (marked with <strong>optional</strong> in code.m). However, commenting out these optional exclusion criterion did not allow us to reproduce the figures or values in the main paper; these values are also reported above in the report but not directly compared to the reported values in the paper for brevity.</p>
-<pre class="r"><code>Author_Assistance = FALSE # was author assistance provided? (if so, enter TRUE)
+<p>Originally, The exact numerical output and figures generated by code.m and the data provided do not match those provided in the paper. We suspected that this might have something to do with the way that different data were excluded from anlayses. Most of the values do not match, with one exception, with a variety of both minor and major numerical errors. For example, we noticed that there were certian optional exclusion criterion that were included in the main analyses (marked with <strong>optional</strong> in code.m). However, commenting out these optional exclusion criterion did not allow us to reproduce the figures or values in the main paper; these values are also reported above in the report but not directly compared to the reported values in the paper for brevity.</p>
+<p><strong>Update</strong>: The authors provided new code with the following reasons for the correction:</p>
+<p>“Reasons for the correction:</p>
+<ol style="list-style-type: decimal">
+<li><p>The “Example analysis code” component uploaded to OSF 10/17/2014 (<a href="https://osf.io/7gvh9/" class="uri">https://osf.io/7gvh9/</a>) was not sufficiently documented and hard to use in replicating the published results. The code presented here is a commented version of the code used to produce the reported analyses, and therefore identically replications the results from the paper.</p></li>
+<li><p>The data file with the mouse traces (sullivanEtAl2014ForPub_mouse.csv) contained several errors, leading to another source of discrepancy from the paper’s reported statistics. The mouse tracking data uploaded in this component (newData.csv) is the original raw data.</p></li>
+<li><p>This code reports that the percent of trials excluded from analysis is 8.1%, but the paper reports that it was 13.3%. This updated 8.1% figure is correct, and the reported number in the paper is a mistake.&quot;</p></li>
+</ol>
+<p>We are now able to reproduce the values, and have attributed these errors to the error in the data file with the mouse traces, as specified by the author.</p>
+<pre class="r"><code>Author_Assistance = TRUE # was author assistance provided? (if so, enter TRUE)
 
 Insufficient_Information_Errors &lt;- 0 # how many discrete insufficient information issues did you encounter?
 
@@ -354,10 +468,10 @@ Insufficient_Information_Errors &lt;- 0 # how many discrete insufficient informa
 locus_typo &lt;- NA # how many discrete issues did you encounter that related to typographical errors?
 locus_specification &lt;- NA # how many discrete issues did you encounter that related to incomplete, incorrect, or unclear specification of the original analyses?
 locus_analysis &lt;- NA # how many discrete issues did you encounter that related to errors in the authors' original analyses?
-locus_data &lt;- NA # how many discrete issues did you encounter that related to errors in the data files shared by the authors?
+locus_data &lt;- 4 # how many discrete issues did you encounter that related to errors in the data files shared by the authors?
 locus_unidentified &lt;- NA # how many discrete issues were there for which you could not identify the cause
 
-Affects_Conclusion &lt;- NA # Do any reproducibility issues encounter appear to affect the conclusions made in the original article? TRUE, FALSE, or NA. This is a subjective judgement, but you should taking into account multiple factors, such as the presence/absence of decision errors, the number of target outcomes that could not be reproduced, the type of outcomes that could or could not be reproduced, the difference in magnitude of effect sizes, and the predictions of the specific hypothesis under scrutiny.</code></pre>
+Affects_Conclusion &lt;- FALSE # Do any reproducibility issues encounter appear to affect the conclusions made in the original article? TRUE, FALSE, or NA. This is a subjective judgement, but you should taking into account multiple factors, such as the presence/absence of decision errors, the number of target outcomes that could not be reproduced, the type of outcomes that could or could not be reproduced, the difference in magnitude of effect sizes, and the predictions of the specific hypothesis under scrutiny.</code></pre>
 <p>[PILOT/COPILOT DOD NOT EDIT THE CODE CHUNK BELOW]</p>
 <pre class="r"><code>reportObject &lt;- reportObject %&gt;%
   filter(dummyRow == FALSE) %&gt;% # remove the dummy row
@@ -402,12 +516,11 @@ if(reportType == &quot;final&quot;){
 ##  ui       X11                         
 ##  language (EN)                        
 ##  collate  en_US.UTF-8                 
-##  tz       America/Los_Angeles         
-##  date     2018-06-13                  
+##  tz       &lt;NA&gt;                        
+##  date     2019-06-20                  
 ## 
 ##  package      * version date      
 ##  assertthat     0.2.0   2017-04-11
-##  backports      1.1.2   2017-12-13
 ##  base         * 3.4.2   2017-10-04
 ##  bindr          0.1.1   2018-03-13
 ##  bindrcpp     * 0.2.2   2018-03-29
@@ -422,9 +535,9 @@ if(reportType == &quot;final&quot;){
 ##  devtools       1.13.5  2018-02-18
 ##  digest         0.6.15  2018-01-28
 ##  dplyr        * 0.7.5   2018-05-19
-##  evaluate       0.10.1  2017-06-24
+##  evaluate       0.12    2018-10-09
 ##  forcats      * 0.3.0   2018-02-19
-##  foreign        0.8-69  2017-06-22
+##  foreign        0.8-71  2018-07-20
 ##  ggplot2      * 2.2.1   2016-12-30
 ##  glue           1.2.0   2017-10-29
 ##  graphics     * 3.4.2   2017-10-04
@@ -435,7 +548,7 @@ if(reportType == &quot;final&quot;){
 ##  hms            0.4.2   2018-03-10
 ##  htmltools      0.3.6   2017-04-28
 ##  httr           1.3.1   2017-08-20
-##  jsonlite       1.5     2017-06-01
+##  jsonlite       1.6     2018-12-07
 ##  knitr        * 1.20    2018-02-20
 ##  lattice        0.20-35 2017-03-25
 ##  lazyeval       0.2.1   2017-10-29
@@ -458,9 +571,8 @@ if(reportType == &quot;final&quot;){
 ##  readr        * 1.1.1   2017-05-16
 ##  readxl       * 1.1.0   2018-04-20
 ##  reshape2       1.4.3   2017-12-11
-##  rlang          0.2.1   2018-05-30
-##  rmarkdown      1.9     2018-03-01
-##  rprojroot      1.3-2   2018-01-03
+##  rlang          0.3.0.1 2018-10-25
+##  rmarkdown      1.11    2018-12-08
 ##  rstudioapi     0.7     2017-09-07
 ##  rvest          0.3.2   2016-06-17
 ##  scales         0.5.0   2017-08-24
@@ -475,10 +587,9 @@ if(reportType == &quot;final&quot;){
 ##  utils        * 3.4.2   2017-10-04
 ##  withr          2.1.2   2018-03-15
 ##  xml2           1.2.0   2018-01-24
-##  yaml           2.1.19  2018-05-01
+##  yaml           2.2.0   2018-07-25
 ##  source                                     
 ##  CRAN (R 3.4.0)                             
-##  cran (@1.1.2)                              
 ##  local                                      
 ##  cran (@0.1.1)                              
 ##  cran (@0.2.2)                              
@@ -493,9 +604,9 @@ if(reportType == &quot;final&quot;){
 ##  cran (@1.13.5)                             
 ##  cran (@0.6.15)                             
 ##  cran (@0.7.5)                              
-##  CRAN (R 3.4.1)                             
+##  cran (@0.12)                               
 ##  cran (@0.3.0)                              
-##  CRAN (R 3.4.2)                             
+##  CRAN (R 3.4.4)                             
 ##  CRAN (R 3.4.0)                             
 ##  cran (@1.2.0)                              
 ##  local                                      
@@ -506,7 +617,7 @@ if(reportType == &quot;final&quot;){
 ##  cran (@0.4.2)                              
 ##  CRAN (R 3.4.0)                             
 ##  CRAN (R 3.4.1)                             
-##  CRAN (R 3.4.0)                             
+##  cran (@1.6)                                
 ##  cran (@1.20)                               
 ##  CRAN (R 3.4.2)                             
 ##  cran (@0.2.1)                              
@@ -529,9 +640,8 @@ if(reportType == &quot;final&quot;){
 ##  CRAN (R 3.4.0)                             
 ##  cran (@1.1.0)                              
 ##  cran (@1.4.3)                              
-##  cran (@0.2.1)                              
-##  cran (@1.9)                                
-##  cran (@1.3-2)                              
+##  CRAN (R 3.4.4)                             
+##  cran (@1.11)                               
 ##  CRAN (R 3.4.1)                             
 ##  CRAN (R 3.4.0)                             
 ##  CRAN (R 3.4.1)                             
@@ -546,7 +656,7 @@ if(reportType == &quot;final&quot;){
 ##  local                                      
 ##  cran (@2.1.2)                              
 ##  cran (@1.2.0)                              
-##  cran (@2.1.19)</code></pre>
+##  cran (@2.2.0)</code></pre>
 </div>
 
 

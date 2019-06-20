@@ -37,3 +37,13 @@ vignettes/*.pdf
 tests/testthat/packrat/
 packrat-scenario*/
 packrat/lib*/
+authorCorrectAnalysis/mediation.txt
+authorCorrectAnalysis/mediationAnalysis.m
+authorCorrectAnalysis/newData.csv
+authorCorrectAnalysis/percHeight.m
+authorCorrectAnalysis/plotTwoDimError.m
+authorCorrectAnalysis/readme.txt
+authorCorrectAnalysis/shadedErrorBar.m
+authorCorrectAnalysis/sullivanEtAl2014ForPub_key.csv
+authorCorrectAnalysis/timepoint_regressions.m
+authorCorrectAnalysis/updatedCode.m
