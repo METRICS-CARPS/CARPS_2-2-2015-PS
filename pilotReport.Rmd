@@ -107,13 +107,22 @@ MATLAB OUTPUT (Code provided by authors): in the high self-control group, the pa
 
 MATLAB OUTPUT (Optional exclusions commented): in the high self-control group, the paths for taste and health were quite similar and became significantly greater than zero at approximately the same time (health: t = 72; taste: t = 66)
 
+MATLAB OUTPUT (Optional exclusions commented):     'n the high-self-control group, the paths for tastiness and healthfulness were quite similar and became significantly greater than zero at approximately the same time (healthfulness: t = 67; tastiness: t = 60).
+
+
 
 ```{r}
+## Original provided code
 ## High self-control 
 # heathfulness
-reportObject <- reproCheck(reportedValue = '67', obtainedValue = 72, valueType = 'mean')
+# reportObject <- reproCheck(reportedValue = '67', obtainedValue = 72, valueType = 'mean')
 #tastiness
-reportObject <- reproCheck(reportedValue = '60', obtainedValue = 63, valueType = 'mean')
+# reportObject <- reproCheck(reportedValue = '60', obtainedValue = 63, valueType = 'mean')
+
+## Corrected code
+reportObject <- reproCheck(reportedValue = '67', obtainedValue = 67, valueType = 'mean')
+#tastiness
+reportObject <- reproCheck(reportedValue = '60', obtainedValue = 60, valueType = 'mean')
 
 ```
 
@@ -125,12 +134,18 @@ MATLAB OUTPUT (Code provided by authors): for the low self-control group, the la
 
 MATLAB OUTPUT (Optional exclusions commented): for the low self-control group, the latency at which taste became significant was similar to that of the high self-control group (t = 58), but that for health occurred much later (t = 88).
 
+MATLAB OUTPUT (Corrected code):  In contrast, for the low-self-control group, the latency at which tastiness became significant was similar to that of the high-self-control group (t = 56), but the latency for healthfulness occurred much later (t = 85).'
 
 ```{r}
 ## Raw output (optional exclusions NOT commented)
 ## Low self-control 
 # heathfulness
-reportObject <- reproCheck(reportedValue = '56', obtainedValue = 57, valueType = 'mean')
+# reportObject <- reproCheck(reportedValue = '56', obtainedValue = 57, valueType = 'mean')
+#tastiness
+# reportObject <- reproCheck(reportedValue = '85', obtainedValue = 85, valueType = 'mean')
+
+## Corrected code
+reportObject <- reproCheck(reportedValue = '56', obtainedValue = 56, valueType = 'mean')
 #tastiness
 reportObject <- reproCheck(reportedValue = '85', obtainedValue = 85, valueType = 'mean')
 ```
@@ -145,19 +160,33 @@ MATLAB OUTPUT (Code provided by authors): The normalized time at which taste and
 
 MATLAB OUTPUT (Optional exclusions commented): The normalized time at which taste and health became significant did not differ for high self-control subjects (mean health: t = 74.30; mean taste: t = 69.00; mean difference = -6.80; t(9)=-1.67, p=0.06, one-tailed)
 
+MATLAB OUTPUT (Corrected code):     'The normalized time at which tastiness and healthfulness became significant did not differ significantly for high-self-control subjects (mean healthfulness: t = 69.50; mean tastiness: t = 68.55; mean difference = -2.9, t(9) = -0.46, p = 0.33 (one-tailed), 
+
 
 ```{r}
 ## High self-control statistics
+# # heathfulness
+# reportObject <- reproCheck(reportedValue = '69.50', obtainedValue = 75.00, valueType = 'mean')
+# 
+# # tastiness
+# reportObject <- reproCheck(reportedValue = '68.54', obtainedValue = 72.27, valueType = 'mean')
+# 
+# # t-test values
+# reportObject <- reproCheck(reportedValue = '9', obtainedValue = 9, valueType = 'df')
+# reportObject <- reproCheck(reportedValue = '-.46', obtainedValue = -.74, valueType = 't')
+# reportObject <- reproCheck(reportedValue = '.33', obtainedValue = .24, valueType = 'p')
+
+## Corrected code
 # heathfulness
-reportObject <- reproCheck(reportedValue = '69.50', obtainedValue = 75.00, valueType = 'mean')
+reportObject <- reproCheck(reportedValue = '69.50', obtainedValue = 69.50, valueType = 'mean')
 
 # tastiness
-reportObject <- reproCheck(reportedValue = '68.54', obtainedValue = 72.27, valueType = 'mean')
+reportObject <- reproCheck(reportedValue = '68.54', obtainedValue = 68.55, valueType = 'mean')
 
 # t-test values
 reportObject <- reproCheck(reportedValue = '9', obtainedValue = 9, valueType = 'df')
-reportObject <- reproCheck(reportedValue = '-.46', obtainedValue = -.74, valueType = 't')
-reportObject <- reproCheck(reportedValue = '.33', obtainedValue = .24, valueType = 'p')
+reportObject <- reproCheck(reportedValue = '-.46', obtainedValue = -.46, valueType = 't')
+reportObject <- reproCheck(reportedValue = '.33', obtainedValue = .33, valueType = 'p')
 ```
 
 ### 4th target outcome 
@@ -168,29 +197,54 @@ MATLAB OUTPUT (Code provided by authors): but they were significantly different 
 
 MATLAB OUPUT (Optional exclusions commented): but they were significantly different in the low self-control group (mean health: t = 84.50; mean taste: t = 67.35; mean difference = -15.70, t(9)=-2.84, p=0.01, one-tailed).
 
+MATLAB OUTPUT (Corrected code): but they were significantly different in the low-self-control group (mean healthfulness: t = 81.22; mean tastiness: t = 61.35; mean difference = -16), t(8) = -2.5, p = 0.02 (one-tailed)'
 
 
 ```{r}
 ## High self-control statistics
 # heathfulness
-reportObject <- reproCheck(reportedValue = '81.22', obtainedValue = 75.00, valueType = 'mean')
+# reportObject <- reproCheck(reportedValue = '81.22', obtainedValue = 75.00, valueType = 'mean')
+# 
+# # tastiness
+# reportObject <- reproCheck(reportedValue = '61.35', obtainedValue = 72.27, valueType = 'mean')
+# 
+# # t-test values
+# reportObject <- reproCheck(reportedValue = '8', obtainedValue = 7, valueType = 'df')
+# reportObject <- reproCheck(reportedValue = '-2.5', obtainedValue = -2.06, valueType = 't')
+# reportObject <- reproCheck(reportedValue = '.02', obtainedValue = .04, valueType = 'p')
+
+
+## Corrected code
+reportObject <- reproCheck(reportedValue = '81.22', obtainedValue = 81.22, valueType = 'mean')
 
 # tastiness
-reportObject <- reproCheck(reportedValue = '61.35', obtainedValue = 72.27, valueType = 'mean')
+reportObject <- reproCheck(reportedValue = '61.35', obtainedValue = 61.35, valueType = 'mean')
 
 # t-test values
-reportObject <- reproCheck(reportedValue = '8', obtainedValue = 7, valueType = 'df')
-reportObject <- reproCheck(reportedValue = '-2.5', obtainedValue = -2.06, valueType = 't')
-reportObject <- reproCheck(reportedValue = '.02', obtainedValue = .04, valueType = 'p')
+reportObject <- reproCheck(reportedValue = '8', obtainedValue =8, valueType = 'df')
+reportObject <- reproCheck(reportedValue = '-2.5', obtainedValue = -2.5, valueType = 't')
+reportObject <- reproCheck(reportedValue = '.02', obtainedValue = .02, valueType = 'p')
 ```
 
 # Step 4: Conclusion
 
-The exact numerical output and figures generated by code.m and the data provided do not match those provided in the paper. We suspect that this might have something to do with the way that different data were excluded from anlayses. Most of the values do not match, with one exception, with a variety of both minor and major numerical errors. For example, we noticed that there were certian optional exclusion criterion that were included in the main analyses (marked with **optional** in code.m). However, commenting out these optional exclusion criterion did not allow us to reproduce the figures or values in the main paper; these values are also reported above in the report but not directly compared to the reported values in the paper for brevity. 
+Originally, The exact numerical output and figures generated by code.m and the data provided do not match those provided in the paper. We suspected that this might have something to do with the way that different data were excluded from anlayses. Most of the values do not match, with one exception, with a variety of both minor and major numerical errors. For example, we noticed that there were certian optional exclusion criterion that were included in the main analyses (marked with **optional** in code.m). However, commenting out these optional exclusion criterion did not allow us to reproduce the figures or values in the main paper; these values are also reported above in the report but not directly compared to the reported values in the paper for brevity. 
+
+**Update**: The authors provided new code with the following reasons for the correction:
+
+"Reasons for the correction:
+
+1) The "Example analysis code" component uploaded to OSF 10/17/2014 (https://osf.io/7gvh9/) was not sufficiently documented and hard to use in replicating the published results. The code presented here is a commented version of the code used to produce the reported analyses, and therefore identically replications the results from the paper.
+
+2) The data file with the mouse traces (sullivanEtAl2014ForPub_mouse.csv) contained several errors, leading to another source of discrepancy from the paper's reported statistics. The mouse tracking data uploaded in this component (newData.csv) is the original raw data.
+
+3) This code reports that the percent of trials excluded from analysis is 8.1%, but the paper reports that it was 13.3%. This updated 8.1% figure is correct, and the reported number in the paper is a mistake."
+
+We are now able to reproduce the values, and have attributed these errors to the error in the data file with the mouse traces, as specified by the author.
 
 
 ```{r}
-Author_Assistance = FALSE # was author assistance provided? (if so, enter TRUE)
+Author_Assistance = TRUE # was author assistance provided? (if so, enter TRUE)
 
 Insufficient_Information_Errors <- 0 # how many discrete insufficient information issues did you encounter?
 
@@ -199,10 +253,10 @@ Insufficient_Information_Errors <- 0 # how many discrete insufficient informatio
 locus_typo <- NA # how many discrete issues did you encounter that related to typographical errors?
 locus_specification <- NA # how many discrete issues did you encounter that related to incomplete, incorrect, or unclear specification of the original analyses?
 locus_analysis <- NA # how many discrete issues did you encounter that related to errors in the authors' original analyses?
-locus_data <- NA # how many discrete issues did you encounter that related to errors in the data files shared by the authors?
+locus_data <- 4 # how many discrete issues did you encounter that related to errors in the data files shared by the authors?
 locus_unidentified <- NA # how many discrete issues were there for which you could not identify the cause
 
-Affects_Conclusion <- NA # Do any reproducibility issues encounter appear to affect the conclusions made in the original article? TRUE, FALSE, or NA. This is a subjective judgement, but you should taking into account multiple factors, such as the presence/absence of decision errors, the number of target outcomes that could not be reproduced, the type of outcomes that could or could not be reproduced, the difference in magnitude of effect sizes, and the predictions of the specific hypothesis under scrutiny.
+Affects_Conclusion <- FALSE # Do any reproducibility issues encounter appear to affect the conclusions made in the original article? TRUE, FALSE, or NA. This is a subjective judgement, but you should taking into account multiple factors, such as the presence/absence of decision errors, the number of target outcomes that could not be reproduced, the type of outcomes that could or could not be reproduced, the difference in magnitude of effect sizes, and the predictions of the specific hypothesis under scrutiny.
 ```
 
 [PILOT/COPILOT DOD NOT EDIT THE CODE CHUNK BELOW]
