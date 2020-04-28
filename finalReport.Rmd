@@ -11,14 +11,14 @@ output:
 
 ```{r}
 articleID <- "2-2-2015_PS" # insert the article ID code here e.g., "10-3-2015_PS"
-reportType <- 'pilot' # specify whether this is the 'pilot' report or 'final' report
+reportType <- 'final' # specify whether this is the 'pilot' report or 'final' report
 pilotNames <- "Bria Long" # insert the pilot's name here e.g., "Tom Hardwicke".  If there are multiple cpilots enter both names in a character string e.g., "Tom Hardwicke, Bob Dylan"
-copilotNames <- NA # # insert the co-pilot's name here e.g., "Michael Frank". If there are multiple co-pilots enter both names in a character string e.g., "Tom Hardwicke, Bob Dylan"
-pilotTTC <- NA # insert the pilot's estimated time to complete (in minutes, fine to approximate) e.g., 120
-copilotTTC <- NA # insert the co-pilot's estimated time to complete (in minutes, fine to approximate) e.g., 120
-pilotStartDate <- 06/13/2018 # insert the pilot's start date in US format e.g., as.Date("01/25/18", format = "%m/%d/%y")
-copilotStartDate <- NA # insert the co-pilot's start date in US format e.g., as.Date("01/25/18", format = "%m/%d/%y")
-completionDate <- NA # copilot insert the date of final report completion (after any necessary rounds of author assistance) in US format e.g., as.Date("01/25/18", format = "%m/%d/%y")
+copilotNames <- "Tom Hardwicke" # # insert the co-pilot's name here e.g., "Michael Frank". If there are multiple co-pilots enter both names in a character string e.g., "Tom Hardwicke, Bob Dylan"
+pilotTTC <- 350 # insert the pilot's estimated time to complete (in minutes, fine to approximate) e.g., 120
+copilotTTC <- 240 # insert the co-pilot's estimated time to complete (in minutes, fine to approximate) e.g., 120
+pilotStartDate <- as.Date("06/13/2018", format = "%m/%d/%y") # insert the pilot's start date in US format e.g., as.Date("01/25/18", format = "%m/%d/%y")
+copilotStartDate <- as.Date("03/14/2018", format = "%m/%d/%y") # insert the co-pilot's start date in US format e.g., as.Date("01/25/18", format = "%m/%d/%y")
+completionDate <- as.Date("10/21/2019", format = "%m/%d/%y") # copilot insert the date of final report completion (after any necessary rounds of author assistance) in US format e.g., as.Date("01/25/18", format = "%m/%d/%y")
 ```
 
 ------
@@ -26,43 +26,17 @@ completionDate <- NA # copilot insert the date of final report completion (after
 #### Methods summary: 
 In this task, participants continuously indicated which of two foods they preferredusing their mouse; these foods varied in both healthiness and tastiness. The authors then conducted trajectory analysis using linear regressions for every subject to estimate the degree to which the trajectories where influenced by the food attributes at every time point; the coefficients were then used to assess the earliest time points at which the mouse trajectories were influenced by these attributes for each subject, and statistical tests were performed over these time points.
 
-The authors provided extensive code to reproduce the analyses and figures in the manuscript. The code provided by the authors also outputted both the primary sentences and figures in the paper. However, these did not match the numbers provided in the targetOutcomes.md taken from the main manuscript. We noticed that there were some "optional" exclusions in the main analysis file. As such, we ran the codeboth when excluding these optional trials and when including them; both versions are reported below; neither matched the values in the main manuscript.
-
-We note that the author's code was written in Matlab 2014; we attempted to reproduce it in Matlab 2015/Matlab 2018. The following command was run in Matlab to assess the dependncines used:
+We note that the author's code was written in Matlab 2014; we attempted to reproduce it in Matlab 2015/Matlab 2018. The following command was run in Matlab to assess the dependencies used:
 ## [fList,pList] = matlab.codetools.requiredFilesAndProducts('code.m');
 The pilot/co-pilot that the Mapping Toolbox, Matlab, and Statisitcs and Machine Learning toolbox were required.
+
 The only other file that was required and not provided was a plotting tool (shadedErrorBar.m) which the pilot already had installed from the Matlab file exchange.
 
 ------
 
 #### Target outcomes paragraph:
 
-To address whether individual differences in dietary self control were associated with differences in the relative speed at which the healthfulness and tastiness attributes
-were computed, we began by comparing how taste and
-health information were reflected in the mouse trajectories
-for individuals with high versus low self-control, as
-defined using a median split of the SCSR statistic. As
-shown in Figure 5a, we found substantial differences
-across the groups. In particular, in the high-self-control
-group, the paths for tastiness and healthfulness were
-quite similar and became significantly greater than zero
-at approximately the same time (healthfulness: t = 67;
-tastiness: t = 60). In contrast, for the low-self-control
-group, the latency at which tastiness became significant
-was similar to that of the high-self-control group (t = 56),
-but the latency for healthfulness occurred much later (t =
-85). As before, we tested for the significance of these differences
-by estimating at the individual level the earliest
-time at which healthfulness became significantly greater
-than zero and then comparing the distributions. The normalized
-time at which tastiness and healthfulness became
-significant did not differ significantly for high-self-control
-subjects (mean healthfulness: t = 69.50; mean tastiness:
-t = 68.54; mean difference = −2.9), t(9) = −0.46, p = .33
-(one-tailed), but they were significantly different in the
-low-self-control group (mean healthfulness: t = 81.22;
-mean tastiness: t = 61.35; mean difference = −16), t(8) =
-−2.5, p = .02 (one-tailed).
+> To address whether individual differences in dietary self control were associated with differences in the relative speed at which the healthfulness and tastiness attributes were computed, we began by comparing how taste and health information were reflected in the mouse trajectories for individuals with high versus low self-control, as defined using a median split of the SCSR statistic. As shown in Figure 5a, we found substantial differences across the groups. In particular, in the high-self-control group, the paths for tastiness and healthfulness were quite similar and became significantly greater than zero at approximately the same time (healthfulness: t = 67; tastiness: t = 60). In contrast, for the low-self-control group, the latency at which tastiness became significant was similar to that of the high-self-control group (t = 56), but the latency for healthfulness occurred much later (t = 85). As before, we tested for the significance of these differences by estimating at the individual level the earliest time at which healthfulness became significantly greater than zero and then comparing the distributions. The normalized time at which tastiness and healthfulness became significant did not differ significantly for high-self-control subjects (mean healthfulness: t = 69.50; mean tastiness: t = 68.54; mean difference = −2.9), t(9) = −0.46, p = .33 (one-tailed), but they were significantly different in the low-self-control group (mean healthfulness: t = 81.22; mean tastiness: t = 61.35; mean difference = −16), t(8) = −2.5, p = .02 (one-tailed).
 
 
 ```{r global_options, include=FALSE}
@@ -83,10 +57,10 @@ library(CARPSreports) # custom report functions
 
 
 ```{r}
-# Pilot/copilot: Do not make changes to this code chunk!
 # Prepare report object. This will be updated automatically by the reproCheck function each time values are compared
 reportObject <- data.frame(dummyRow = TRUE, reportedValue = NA, obtainedValue = NA, valueType = NA, percentageError = NA, comparisonOutcome = NA, eyeballCheck = NA)
 ```
+
 # Step 2: Pre-processing and analysis
 
 ## Step 2a: Run matlab file provided by authors.
@@ -228,20 +202,21 @@ reportObject <- reproCheck(reportedValue = '.02', obtainedValue = .02, valueType
 
 # Step 4: Conclusion
 
-Originally, The exact numerical output and figures generated by code.m and the data provided do not match those provided in the paper. We suspected that this might have something to do with the way that different data were excluded from anlayses. Most of the values do not match, with one exception, with a variety of both minor and major numerical errors. For example, we noticed that there were certian optional exclusion criterion that were included in the main analyses (marked with **optional** in code.m). However, commenting out these optional exclusion criterion did not allow us to reproduce the figures or values in the main paper; these values are also reported above in the report but not directly compared to the reported values in the paper for brevity. 
+The authors provided extensive code to reproduce the analyses and figures in the manuscript. The code provided by the authors also outputted both the primary sentences and figures in the paper. However, these did not match the numbers provided in the targetOutcomes.md taken from the main manuscript. We noticed that there were some "optional" exclusions in the main analysis file. As such, we ran the code both when excluding these optional trials and when including them; both versions are reported below; neither matched the values in the main manuscript.
 
-**Update**: The authors provided new code with the following reasons for the correction:
+Most of the values did not match, with one exception, with a variety of both minor and major numerical errors. For example, we noticed that there were certian optional exclusion criterion that were included in the main analyses (marked with **optional** in code.m). However, commenting out these optional exclusion criterion did not allow us to reproduce the figures or values in the main paper; these values are also reported above in the report but not directly compared to the reported values in the paper for brevity. 
 
-"Reasons for the correction:
+**Update**: We contacted the authors to ask if they knew what the problem was. It turns out that they had already realised the original code they uploaded did not completely reproduce the reported findings, and had additionally discovered "a mistake in the data posted to OSF". They had posted corrected data and code to the OSF (https://osf.io/mx92g/). Our team was not aware of this and it is not mentioned in the paper. The authors say that they had considered posting a corrigendum to the paper but decided not to pursue that because Psychological Science only publishes one if the error "significantly affect an article’s findings or conclusions or a reader’s understanding." They "did not feel this met that threshold".
 
-1) The "Example analysis code" component uploaded to OSF 10/17/2014 (https://osf.io/7gvh9/) was not sufficiently documented and hard to use in replicating the published results. The code presented here is a commented version of the code used to produce the reported analyses, and therefore identically replications the results from the paper.
+A readme file accompanying the updated OSF materials cotnains further details about the original errors:
 
-2) The data file with the mouse traces (sullivanEtAl2014ForPub_mouse.csv) contained several errors, leading to another source of discrepancy from the paper's reported statistics. The mouse tracking data uploaded in this component (newData.csv) is the original raw data.
+> 1) The "Example analysis code" component uploaded to OSF 10/17/2014 (https://osf.io/7gvh9/) was not sufficiently documented and hard to use in replicating the published results. The code presented here is a commented version of the code used to produce the reported analyses, and therefore identically replications the results from the paper.
 
-3) This code reports that the percent of trials excluded from analysis is 8.1%, but the paper reports that it was 13.3%. This updated 8.1% figure is correct, and the reported number in the paper is a mistake."
+> 2) The data file with the mouse traces (sullivanEtAl2014ForPub_mouse.csv) contained several errors, leading to another source of discrepancy from the paper's reported statistics. The mouse tracking data uploaded in this component (newData.csv) is the original raw data.
 
-We are now able to reproduce the values, and have attributed these errors to the error in the data file with the mouse traces, as specified by the author.
+> 3) This code reports that the percent of trials excluded from analysis is 8.1%, but the paper reports that it was 13.3%. This updated 8.1% figure is correct, and the reported number in the paper is a mistake."
 
+We are now able to reproduce the values and have attributed the original reproducibility problems to the error in the data file with the mouse traces, as specified by the author.
 
 ```{r}
 Author_Assistance = TRUE # was author assistance provided? (if so, enter TRUE)
@@ -250,16 +225,21 @@ Insufficient_Information_Errors <- 0 # how many discrete insufficient informatio
 
 # Assess the causal locus (discrete reproducibility issues) of any reproducibility errors. Note that there doesn't necessarily have to be a one-to-one correspondance between discrete reproducibility issues and reproducibility errors. For example, it could be that the original article neglects to mention that a Greenhouse-Geisser correct was applied to ANOVA outcomes. This might result in multiple reproducibility errors, but there is a single causal locus (discrete reproducibility issue).
 
-locus_typo <- NA # how many discrete issues did you encounter that related to typographical errors?
-locus_specification <- NA # how many discrete issues did you encounter that related to incomplete, incorrect, or unclear specification of the original analyses?
-locus_analysis <- NA # how many discrete issues did you encounter that related to errors in the authors' original analyses?
+locus_typo <- 0 # how many discrete issues did you encounter that related to typographical errors?
+locus_specification <- 0 # how many discrete issues did you encounter that related to incomplete, incorrect, or unclear specification of the original analyses?
+locus_analysis <- 0 # how many discrete issues did you encounter that related to errors in the authors' original analyses?
 locus_data <- 4 # how many discrete issues did you encounter that related to errors in the data files shared by the authors?
-locus_unidentified <- NA # how many discrete issues were there for which you could not identify the cause
+locus_unidentified <- 0 # how many discrete issues were there for which you could not identify the cause
+
+# How many of the above issues were resolved through author assistance?
+locus_typo_resolved <- 0 # how many discrete issues did you encounter that related to typographical errors?
+locus_specification_resolved <- 0 # how many discrete issues did you encounter that related to incomplete, incorrect, or unclear specification of the original analyses?
+locus_analysis_resolved <- 0 # how many discrete issues did you encounter that related to errors in the authors' original analyses?
+locus_data_resolved <- 4 # how many discrete issues did you encounter that related to errors in the data files shared by the authors?
+locus_unidentified_resolved <- 0 # how many discrete issues were there for which you could not identify the cause
 
 Affects_Conclusion <- FALSE # Do any reproducibility issues encounter appear to affect the conclusions made in the original article? TRUE, FALSE, or NA. This is a subjective judgement, but you should taking into account multiple factors, such as the presence/absence of decision errors, the number of target outcomes that could not be reproduced, the type of outcomes that could or could not be reproduced, the difference in magnitude of effect sizes, and the predictions of the specific hypothesis under scrutiny.
 ```
-
-[PILOT/COPILOT DOD NOT EDIT THE CODE CHUNK BELOW]
 
 ```{r}
 reportObject <- reportObject %>%
@@ -269,7 +249,7 @@ reportObject <- reportObject %>%
   select(articleID, everything()) # make articleID first column
 
 # decide on final outcome
-if(any(reportObject$comparisonOutcome != "MATCH") | Insufficient_Information_Errors > 0){
+if(any(reportObject$comparisonOutcome %in% c("MAJOR_ERROR", "DECISION_ERROR")) | Insufficient_Information_Errors > 0){
   finalOutcome <- "Failure without author assistance"
   if(Author_Assistance == T){
     finalOutcome <- "Failure despite author assistance"
@@ -282,7 +262,7 @@ if(any(reportObject$comparisonOutcome != "MATCH") | Insufficient_Information_Err
 }
 
 # collate report extra details
-reportExtras <- data.frame(articleID, pilotNames, copilotNames, pilotTTC, copilotTTC, pilotStartDate, copilotStartDate, completionDate, Author_Assistance, finalOutcome, Insufficient_Information_Errors, locus_typo, locus_specification, locus_analysis, locus_data, locus_unidentified)
+reportExtras <- data.frame(articleID, pilotNames, copilotNames, pilotTTC, copilotTTC, pilotStartDate, copilotStartDate, completionDate, Author_Assistance, finalOutcome, Insufficient_Information_Errors, locus_typo, locus_specification, locus_analysis, locus_data, locus_unidentified, locus_typo_resolved, locus_specification_resolved, locus_analysis_resolved, locus_data_resolved, locus_unidentified_resolved)
 
 # save report objects
 if(reportType == "pilot"){
@@ -297,8 +277,6 @@ if(reportType == "final"){
 ```
 
 # Session information
-
-[This function will output information about the package versions used in this report:]
 
 ```{r session_info, include=TRUE, echo=TRUE, results='markup'}
 devtools::session_info()

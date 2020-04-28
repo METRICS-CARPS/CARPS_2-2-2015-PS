@@ -1,0 +1,2 @@
+articleID,pilotNames,copilotNames,pilotTTC,copilotTTC,pilotStartDate,copilotStartDate,completionDate,Author_Assistance,finalOutcome,Insufficient_Information_Errors,locus_typo,locus_specification,locus_analysis,locus_data,locus_unidentified,locus_typo_resolved,locus_specification_resolved,locus_analysis_resolved,locus_data_resolved,locus_unidentified_resolved
+2-2-2015_PS,Bria Long,Tom Hardwicke,350,240,2020-06-13,2020-03-14,2020-10-21,TRUE,Success with author assistance,0,0,0,0,4,0,0,0,0,4,0
