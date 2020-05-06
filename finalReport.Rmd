@@ -52,7 +52,7 @@ library(tidyverse) # for data munging
 library(knitr) # for kable table formating
 library(haven) # import and export 'SPSS', 'Stata' and 'SAS' Files
 library(readxl) # import excel files
-library(CARPSreports) # custom report functions
+library(ReproReports) # custom report functions
 ```
 
 
@@ -249,7 +249,7 @@ reportObject <- reportObject %>%
   select(articleID, everything()) # make articleID first column
 
 # decide on final outcome
-if(any(reportObject$comparisonOutcome %in% c("MAJOR_ERROR", "DECISION_ERROR")) | Insufficient_Information_Errors > 0){
+if(any(!(reportObject$comparisonOutcome %in% c("MATCH", "MINOR_ERROR"))) | Insufficient_Information_Errors > 0){
   finalOutcome <- "Failure without author assistance"
   if(Author_Assistance == T){
     finalOutcome <- "Failure despite author assistance"

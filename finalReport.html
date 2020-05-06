@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
 
 <head>
 
 <meta charset="utf-8" />
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
@@ -1343,7 +1342,6 @@ code {
 }
 img {
   max-width:100%;
-  height: auto;
 }
 .tabbed-pane {
   padding-top: 12px;
@@ -1405,6 +1403,7 @@ summary {
   border: none;
   display: inline-block;
   border-radius: 4px;
+  background-color: transparent;
 }
 
 .tabset-dropdown > .nav-tabs.nav-tabs-open > li {
@@ -1433,6 +1432,12 @@ summary {
 }
 }
 
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
 
 .toc-content {
   padding-left: 30px;
@@ -1541,7 +1546,7 @@ library(tidyverse) # for data munging
 library(knitr) # for kable table formating
 library(haven) # import and export 'SPSS', 'Stata' and 'SAS' Files
 library(readxl) # import excel files
-library(CARPSreports) # custom report functions</code></pre>
+library(ReproReports) # custom report functions</code></pre>
 <pre class="r"><code># Prepare report object. This will be updated automatically by the reproCheck function each time values are compared
 reportObject &lt;- data.frame(dummyRow = TRUE, reportedValue = NA, obtainedValue = NA, valueType = NA, percentageError = NA, comparisonOutcome = NA, eyeballCheck = NA)</code></pre>
 </div>
@@ -1720,7 +1725,7 @@ Affects_Conclusion &lt;- FALSE # Do any reproducibility issues encounter appear 
   select(articleID, everything()) # make articleID first column
 
 # decide on final outcome
-if(any(reportObject$comparisonOutcome %in% c(&quot;MAJOR_ERROR&quot;, &quot;DECISION_ERROR&quot;)) | Insufficient_Information_Errors &gt; 0){
+if(any(!(reportObject$comparisonOutcome %in% c(&quot;MATCH&quot;, &quot;MINOR_ERROR&quot;))) | Insufficient_Information_Errors &gt; 0){
   finalOutcome &lt;- &quot;Failure without author assistance&quot;
   if(Author_Assistance == T){
     finalOutcome &lt;- &quot;Failure despite author assistance&quot;
@@ -1749,157 +1754,167 @@ if(reportType == &quot;final&quot;){
 <div id="session-information" class="section level1">
 <h1>Session information</h1>
 <pre class="r"><code>devtools::session_info()</code></pre>
-<pre><code>## ─ Session info ──────────────────────────────────────────────────────────
+<pre><code>## ─ Session info ───────────────────────────────────────────────────────────────
 ##  setting  value                       
-##  version  R version 3.6.0 (2019-04-26)
-##  os       macOS Mojave 10.14.6        
-##  system   x86_64, darwin15.6.0        
+##  version  R version 4.0.0 (2020-04-24)
+##  os       macOS Catalina 10.15.4      
+##  system   x86_64, darwin17.0          
 ##  ui       X11                         
 ##  language (EN)                        
 ##  collate  en_US.UTF-8                 
 ##  ctype    en_US.UTF-8                 
-##  tz       Europe/Berlin               
-##  date     2019-10-22                  
+##  tz       Europe/London               
+##  date     2020-05-06                  
 ## 
-## ─ Packages ──────────────────────────────────────────────────────────────
+## ─ Packages ───────────────────────────────────────────────────────────────────
 ##  package      * version date       lib
 ##  assertthat     0.2.1   2019-03-21 [1]
-##  backports      1.1.4   2019-04-10 [1]
-##  broom          0.5.2   2019-04-07 [1]
-##  callr          3.2.0   2019-03-15 [1]
-##  CARPSreports * 0.1     2019-05-02 [1]
+##  backports      1.1.6   2020-04-05 [1]
+##  broom          0.5.6   2020-04-20 [1]
+##  callr          3.4.3   2020-03-28 [1]
 ##  cellranger     1.1.0   2016-07-27 [1]
-##  cli            1.1.0   2019-03-19 [1]
+##  cli            2.0.2   2020-02-28 [1]
 ##  colorspace     1.4-1   2019-03-18 [1]
 ##  crayon         1.3.4   2017-09-16 [1]
+##  DBI            1.1.0   2019-12-15 [1]
+##  dbplyr         1.4.3   2020-04-19 [1]
 ##  desc           1.2.0   2018-05-01 [1]
-##  devtools       2.0.2   2019-04-08 [1]
-##  digest         0.6.20  2019-07-04 [1]
-##  dplyr        * 0.8.3   2019-07-04 [1]
+##  devtools       2.3.0   2020-04-10 [1]
+##  digest         0.6.25  2020-02-23 [1]
+##  dplyr        * 0.8.5   2020-03-07 [1]
+##  ellipsis       0.3.0   2019-09-20 [1]
 ##  evaluate       0.14    2019-05-28 [1]
-##  forcats      * 0.4.0   2019-02-17 [1]
-##  fs             1.3.1   2019-05-06 [1]
+##  fansi          0.4.1   2020-01-08 [1]
+##  forcats      * 0.5.0   2020-03-01 [1]
+##  fs             1.4.1   2020-04-04 [1]
 ##  generics       0.0.2   2018-11-29 [1]
-##  ggplot2      * 3.1.1   2019-04-07 [1]
-##  glue           1.3.1   2019-03-12 [1]
+##  ggplot2      * 3.3.0   2020-03-05 [1]
+##  glue           1.4.0   2020-04-03 [1]
 ##  gtable         0.3.0   2019-03-25 [1]
-##  haven        * 2.1.1   2019-07-04 [1]
-##  hms            0.4.2   2018-03-10 [1]
-##  htmltools      0.3.6   2017-04-28 [1]
+##  haven        * 2.2.0   2019-11-08 [1]
+##  hms            0.5.3   2020-01-08 [1]
+##  htmltools      0.4.0   2019-10-04 [1]
 ##  httr           1.4.1   2019-08-05 [1]
-##  jsonlite       1.6     2018-12-07 [1]
-##  knitr        * 1.24    2019-08-08 [1]
-##  lattice        0.20-38 2018-11-04 [1]
-##  lazyeval       0.2.2   2019-03-15 [1]
-##  lubridate      1.7.4   2018-04-11 [1]
+##  jsonlite       1.6.1   2020-02-02 [1]
+##  knitr        * 1.28    2020-02-06 [1]
+##  lattice        0.20-41 2020-04-02 [1]
+##  lifecycle      0.2.0   2020-03-06 [1]
+##  lubridate      1.7.8   2020-04-06 [1]
 ##  magrittr       1.5     2014-11-22 [1]
 ##  memoise        1.1.0   2017-04-21 [1]
-##  modelr         0.1.4   2019-02-18 [1]
+##  modelr         0.1.7   2020-04-30 [1]
 ##  munsell        0.5.0   2018-06-12 [1]
-##  nlme           3.1-139 2019-04-09 [1]
-##  pillar         1.4.2   2019-06-29 [1]
-##  pkgbuild       1.0.3   2019-03-20 [1]
-##  pkgconfig      2.0.2   2018-08-16 [1]
+##  nlme           3.1-147 2020-04-13 [1]
+##  pillar         1.4.4   2020-05-05 [1]
+##  pkgbuild       1.0.7   2020-04-25 [1]
+##  pkgconfig      2.0.3   2019-09-22 [1]
 ##  pkgload        1.0.2   2018-10-29 [1]
-##  plyr           1.8.4   2016-06-08 [1]
-##  prettyunits    1.0.2   2015-07-13 [1]
-##  processx       3.3.1   2019-05-08 [1]
-##  ps             1.3.0   2018-12-21 [1]
-##  purrr        * 0.3.2   2019-03-15 [1]
-##  R6             2.4.0   2019-02-14 [1]
-##  Rcpp           1.0.2   2019-07-25 [1]
+##  prettyunits    1.1.1   2020-01-24 [1]
+##  processx       3.4.2   2020-02-09 [1]
+##  ps             1.3.2   2020-02-13 [1]
+##  purrr        * 0.3.4   2020-04-17 [1]
+##  R6             2.4.1   2019-11-12 [1]
+##  Rcpp           1.0.4.6 2020-04-09 [1]
 ##  readr        * 1.3.1   2018-12-21 [1]
 ##  readxl       * 1.3.1   2019-03-13 [1]
-##  remotes        2.0.4   2019-04-10 [1]
-##  rlang          0.4.0   2019-06-25 [1]
-##  rmarkdown      1.14    2019-07-12 [1]
+##  remotes        2.1.1   2020-02-15 [1]
+##  reprex         0.3.0   2019-05-16 [1]
+##  ReproReports * 0.1     2020-05-06 [1]
+##  rlang          0.4.6   2020-05-02 [1]
+##  rmarkdown      2.1     2020-01-20 [1]
 ##  rprojroot      1.3-2   2018-01-03 [1]
-##  rstudioapi     0.10    2019-03-19 [1]
-##  rvest          0.3.3   2019-04-11 [1]
-##  scales         1.0.0   2018-08-09 [1]
+##  rstudioapi     0.11    2020-02-07 [1]
+##  rvest          0.3.5   2019-11-08 [1]
+##  scales         1.1.0   2019-11-18 [1]
 ##  sessioninfo    1.1.1   2018-11-05 [1]
-##  stringi        1.4.3   2019-03-12 [1]
+##  stringi        1.4.6   2020-02-17 [1]
 ##  stringr      * 1.4.0   2019-02-10 [1]
-##  testthat       2.2.1   2019-07-25 [1]
-##  tibble       * 2.1.3   2019-06-06 [1]
-##  tidyr        * 0.8.3   2019-03-01 [1]
-##  tidyselect     0.2.5   2018-10-11 [1]
-##  tidyverse    * 1.2.1   2017-11-14 [1]
-##  usethis        1.5.0   2019-04-07 [1]
-##  withr          2.1.2   2018-03-15 [1]
-##  xfun           0.8     2019-06-25 [1]
-##  xml2           1.2.0   2018-01-24 [1]
-##  yaml           2.2.0   2018-07-25 [1]
+##  testthat       2.3.2   2020-03-02 [1]
+##  tibble       * 3.0.1   2020-04-20 [1]
+##  tidyr        * 1.0.2   2020-01-24 [1]
+##  tidyselect     1.0.0   2020-01-27 [1]
+##  tidyverse    * 1.3.0   2019-11-21 [1]
+##  usethis        1.6.1   2020-04-29 [1]
+##  vctrs          0.2.4   2020-03-10 [1]
+##  withr          2.2.0   2020-04-20 [1]
+##  xfun           0.13    2020-04-13 [1]
+##  xml2           1.3.2   2020-04-23 [1]
+##  yaml           2.2.1   2020-02-01 [1]
 ##  source                                     
-##  CRAN (R 3.6.0)                             
-##  CRAN (R 3.6.0)                             
-##  CRAN (R 3.6.0)                             
-##  CRAN (R 3.6.0)                             
-##  Github (METRICS-CARPS/CARPSreports@1c5e2d7)
-##  CRAN (R 3.6.0)                             
-##  CRAN (R 3.6.0)                             
-##  CRAN (R 3.6.0)                             
-##  CRAN (R 3.6.0)                             
-##  CRAN (R 3.6.0)                             
-##  CRAN (R 3.6.0)                             
-##  CRAN (R 3.6.0)                             
-##  CRAN (R 3.6.0)                             
-##  CRAN (R 3.6.0)                             
-##  CRAN (R 3.6.0)                             
-##  CRAN (R 3.6.0)                             
-##  CRAN (R 3.6.0)                             
-##  CRAN (R 3.6.0)                             
-##  CRAN (R 3.6.0)                             
-##  CRAN (R 3.6.0)                             
-##  CRAN (R 3.6.0)                             
-##  CRAN (R 3.6.0)                             
-##  CRAN (R 3.6.0)                             
-##  CRAN (R 3.6.0)                             
-##  CRAN (R 3.6.0)                             
-##  CRAN (R 3.6.0)                             
-##  CRAN (R 3.6.0)                             
-##  CRAN (R 3.6.0)                             
-##  CRAN (R 3.6.0)                             
-##  CRAN (R 3.6.0)                             
-##  CRAN (R 3.6.0)                             
-##  CRAN (R 3.6.0)                             
-##  CRAN (R 3.6.0)                             
-##  CRAN (R 3.6.0)                             
-##  CRAN (R 3.6.0)                             
-##  CRAN (R 3.6.0)                             
-##  CRAN (R 3.6.0)                             
-##  CRAN (R 3.6.0)                             
-##  CRAN (R 3.6.0)                             
-##  CRAN (R 3.6.0)                             
-##  CRAN (R 3.6.0)                             
-##  CRAN (R 3.6.0)                             
-##  CRAN (R 3.6.0)                             
-##  CRAN (R 3.6.0)                             
-##  CRAN (R 3.6.0)                             
-##  CRAN (R 3.6.0)                             
-##  CRAN (R 3.6.0)                             
-##  CRAN (R 3.6.0)                             
-##  CRAN (R 3.6.0)                             
-##  CRAN (R 3.6.0)                             
-##  CRAN (R 3.6.0)                             
-##  CRAN (R 3.6.0)                             
-##  CRAN (R 3.6.0)                             
-##  CRAN (R 3.6.0)                             
-##  CRAN (R 3.6.0)                             
-##  CRAN (R 3.6.0)                             
-##  CRAN (R 3.6.0)                             
-##  CRAN (R 3.6.0)                             
-##  CRAN (R 3.6.0)                             
-##  CRAN (R 3.6.0)                             
-##  CRAN (R 3.6.0)                             
-##  CRAN (R 3.6.0)                             
-##  CRAN (R 3.6.0)                             
-##  CRAN (R 3.6.0)                             
-##  CRAN (R 3.6.0)                             
-##  CRAN (R 3.6.0)                             
-##  CRAN (R 3.6.0)                             
+##  CRAN (R 4.0.0)                             
+##  CRAN (R 4.0.0)                             
+##  CRAN (R 4.0.0)                             
+##  CRAN (R 4.0.0)                             
+##  CRAN (R 4.0.0)                             
+##  CRAN (R 4.0.0)                             
+##  CRAN (R 4.0.0)                             
+##  CRAN (R 4.0.0)                             
+##  CRAN (R 4.0.0)                             
+##  CRAN (R 4.0.0)                             
+##  CRAN (R 4.0.0)                             
+##  CRAN (R 4.0.0)                             
+##  CRAN (R 4.0.0)                             
+##  CRAN (R 4.0.0)                             
+##  CRAN (R 4.0.0)                             
+##  CRAN (R 4.0.0)                             
+##  CRAN (R 4.0.0)                             
+##  CRAN (R 4.0.0)                             
+##  CRAN (R 4.0.0)                             
+##  CRAN (R 4.0.0)                             
+##  CRAN (R 4.0.0)                             
+##  CRAN (R 4.0.0)                             
+##  CRAN (R 4.0.0)                             
+##  CRAN (R 4.0.0)                             
+##  CRAN (R 4.0.0)                             
+##  CRAN (R 4.0.0)                             
+##  CRAN (R 4.0.0)                             
+##  CRAN (R 4.0.0)                             
+##  CRAN (R 4.0.0)                             
+##  CRAN (R 4.0.0)                             
+##  CRAN (R 4.0.0)                             
+##  CRAN (R 4.0.0)                             
+##  CRAN (R 4.0.0)                             
+##  CRAN (R 4.0.0)                             
+##  CRAN (R 4.0.0)                             
+##  CRAN (R 4.0.0)                             
+##  CRAN (R 4.0.0)                             
+##  CRAN (R 4.0.0)                             
+##  CRAN (R 4.0.0)                             
+##  CRAN (R 4.0.0)                             
+##  CRAN (R 4.0.0)                             
+##  CRAN (R 4.0.0)                             
+##  CRAN (R 4.0.0)                             
+##  CRAN (R 4.0.0)                             
+##  CRAN (R 4.0.0)                             
+##  CRAN (R 4.0.0)                             
+##  CRAN (R 4.0.0)                             
+##  CRAN (R 4.0.0)                             
+##  CRAN (R 4.0.0)                             
+##  CRAN (R 4.0.0)                             
+##  CRAN (R 4.0.0)                             
+##  Github (METRICS-CARPS/CARPSreports@3277f85)
+##  CRAN (R 4.0.0)                             
+##  CRAN (R 4.0.0)                             
+##  CRAN (R 4.0.0)                             
+##  CRAN (R 4.0.0)                             
+##  CRAN (R 4.0.0)                             
+##  CRAN (R 4.0.0)                             
+##  CRAN (R 4.0.0)                             
+##  CRAN (R 4.0.0)                             
+##  CRAN (R 4.0.0)                             
+##  CRAN (R 4.0.0)                             
+##  CRAN (R 4.0.0)                             
+##  CRAN (R 4.0.0)                             
+##  CRAN (R 4.0.0)                             
+##  CRAN (R 4.0.0)                             
+##  CRAN (R 4.0.0)                             
+##  CRAN (R 4.0.0)                             
+##  CRAN (R 4.0.0)                             
+##  CRAN (R 4.0.0)                             
+##  CRAN (R 4.0.0)                             
+##  CRAN (R 4.0.0)                             
 ## 
-## [1] /Library/Frameworks/R.framework/Versions/3.6/Resources/library</code></pre>
+## [1] /Library/Frameworks/R.framework/Versions/4.0/Resources/library</code></pre>
 </div>
 
 
