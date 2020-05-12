@@ -1528,7 +1528,7 @@ completionDate &lt;- as.Date(&quot;10/21/19&quot;, format = &quot;%m/%d/%y&quot;
 <div id="methods-summary" class="section level4">
 <h4>Methods summary:</h4>
 <p>In this task, participants continuously indicated which of two foods they preferredusing their mouse; these foods varied in both healthiness and tastiness. The authors then conducted trajectory analysis using linear regressions for every subject to estimate the degree to which the trajectories where influenced by the food attributes at every time point; the coefficients were then used to assess the earliest time points at which the mouse trajectories were influenced by these attributes for each subject, and statistical tests were performed over these time points.</p>
-<p>We note that the author’s code was written in Matlab 2014; we attempted to reproduce it in Matlab 2015/Matlab 2018. The following command was run in Matlab to assess the dependencies used: ## [fList,pList] = matlab.codetools.requiredFilesAndProducts(‘code.m’); The pilot/co-pilot that the Mapping Toolbox, Matlab, and Statisitcs and Machine Learning toolbox were required.</p>
+<p>We note that the author’s code was written in Matlab 2014; we attempted to reproduce it in Matlab 2015/Matlab 2018. The following command was run in Matlab to assess the dependencies used: ## [fList,pList] = matlab.codetools.requiredFilesAndProducts(‘code.m’); The pilot/co-pilot found that the Mapping Toolbox, Matlab, and Statisitcs and Machine Learning toolbox were required.</p>
 <p>The only other file that was required and not provided was a plotting tool (shadedErrorBar.m) which the pilot already had installed from the Matlab file exchange.</p>
 <hr />
 </div>
@@ -1570,7 +1570,7 @@ reportObject &lt;- data.frame(dummyRow = TRUE, reportedValue = NA, obtainedValue
 <p>PAPER: in the high-self-control group, the paths for tastiness and healthfulness were quite similar and became significantly greater than zero at approximately the same time (healthfulness: t = 67; tastiness: t = 60).</p>
 <p>MATLAB OUTPUT (Code provided by authors): in the high self-control group, the paths for taste and health were quite similar and became significantly greater than zero at approximately the same time (health: t = 72; taste: t = 63)</p>
 <p>MATLAB OUTPUT (Optional exclusions commented): in the high self-control group, the paths for taste and health were quite similar and became significantly greater than zero at approximately the same time (health: t = 72; taste: t = 66)</p>
-<p>MATLAB OUTPUT (Optional exclusions commented): ’n the high-self-control group, the paths for tastiness and healthfulness were quite similar and became significantly greater than zero at approximately the same time (healthfulness: t = 67; tastiness: t = 60).</p>
+<p>MATLAB OUTPUT (Optional exclusions commented): in the high-self-control group, the paths for tastiness and healthfulness were quite similar and became significantly greater than zero at approximately the same time (healthfulness: t = 67; tastiness: t = 60).</p>
 <pre class="r"><code>## Original provided code
 ## High self-control 
 # heathfulness
@@ -1613,7 +1613,7 @@ reportObject &lt;- reproCheck(reportedValue = '85', obtainedValue = 85, valueTyp
 <p>PAPER: The normalized time at which tastiness and healthfulness became significant did not differ significantly for high-self-control subjects (mean healthfulness: t = 69.50; mean tastiness: t = 68.54; mean difference = −2.9), t(9) = −0.46, p = .33 (one-tailed).</p>
 <p>MATLAB OUTPUT (Code provided by authors): The normalized time at which taste and health became significant did not differ for high self-control subjects (mean health: t = 75.00; mean taste: t = 72.27; mean difference = -4.30; t(9)=-0.74, p=0.24, one-tailed)</p>
 <p>MATLAB OUTPUT (Optional exclusions commented): The normalized time at which taste and health became significant did not differ for high self-control subjects (mean health: t = 74.30; mean taste: t = 69.00; mean difference = -6.80; t(9)=-1.67, p=0.06, one-tailed)</p>
-<p>MATLAB OUTPUT (Corrected code): ’The normalized time at which tastiness and healthfulness became significant did not differ significantly for high-self-control subjects (mean healthfulness: t = 69.50; mean tastiness: t = 68.55; mean difference = -2.9, t(9) = -0.46, p = 0.33 (one-tailed),</p>
+<p>MATLAB OUTPUT (Corrected code): The normalized time at which tastiness and healthfulness became significant did not differ significantly for high-self-control subjects (mean healthfulness: t = 69.50; mean tastiness: t = 68.55; mean difference = -2.9, t(9) = -0.46, p = 0.33 (one-tailed)</p>
 <pre class="r"><code>## High self-control statistics
 # # heathfulness
 # reportObject &lt;- reproCheck(reportedValue = '69.50', obtainedValue = 75.00, valueType = 'mean')
@@ -1646,7 +1646,7 @@ reportObject &lt;- reproCheck(reportedValue = '9', obtainedValue = 9, valueType 
 <p>PAPER: …but they were significantly different in the low-self-control group (mean healthfulness: t = 81.22; mean tastiness: t = 61.35; mean difference = −16), t(8) = −2.5, p = .02 (one-tailed).</p>
 <p>MATLAB OUTPUT (Code provided by authors): but they were significantly different in the low self-control group (mean health: t = 82.38; mean taste: t = 63.65; mean difference = -12.50, t(7)=-2.06, p=0.04, one-tailed).</p>
 <p>MATLAB OUPUT (Optional exclusions commented): but they were significantly different in the low self-control group (mean health: t = 84.50; mean taste: t = 67.35; mean difference = -15.70, t(9)=-2.84, p=0.01, one-tailed).</p>
-<p>MATLAB OUTPUT (Corrected code): but they were significantly different in the low-self-control group (mean healthfulness: t = 81.22; mean tastiness: t = 61.35; mean difference = -16), t(8) = -2.5, p = 0.02 (one-tailed)’</p>
+<p>MATLAB OUTPUT (Corrected code): but they were significantly different in the low-self-control group (mean healthfulness: t = 81.22; mean tastiness: t = 61.35; mean difference = -16), t(8) = -2.5, p = 0.02 (one-tailed)</p>
 <pre class="r"><code>## High self-control statistics
 # heathfulness
 # reportObject &lt;- reproCheck(reportedValue = '81.22', obtainedValue = 75.00, valueType = 'mean')
@@ -1764,7 +1764,7 @@ if(reportType == &quot;final&quot;){
 ##  collate  en_US.UTF-8                 
 ##  ctype    en_US.UTF-8                 
 ##  tz       Europe/London               
-##  date     2020-05-11                  
+##  date     2020-05-12                  
 ## 
 ## ─ Packages ───────────────────────────────────────────────────────────────────
 ##  package      * version date       lib

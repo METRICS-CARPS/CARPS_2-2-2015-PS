@@ -28,7 +28,7 @@ In this task, participants continuously indicated which of two foods they prefer
 
 We note that the author's code was written in Matlab 2014; we attempted to reproduce it in Matlab 2015/Matlab 2018. The following command was run in Matlab to assess the dependencies used:
 ## [fList,pList] = matlab.codetools.requiredFilesAndProducts('code.m');
-The pilot/co-pilot that the Mapping Toolbox, Matlab, and Statisitcs and Machine Learning toolbox were required.
+The pilot/co-pilot found that the Mapping Toolbox, Matlab, and Statisitcs and Machine Learning toolbox were required.
 
 The only other file that was required and not provided was a plotting tool (shadedErrorBar.m) which the pilot already had installed from the Matlab file exchange.
 
@@ -69,7 +69,7 @@ Renamed to author_code_optional_exclusions.m in modifiedAnalysis folder). Copy a
 
 ## Step 2b: Rerun matlab file with modified exclusions.
 
-Commented out exclusions that were flagged as optional in the author's code, made modified file author_code_optional_values_commented.m; reran code.  Copy and pasted outcome sentences from matlab console, but did not directly compare values when saw that they also did not match.
+Commented out exclusions that were flagged as optional in the author's code, made modified file author_code_optional_values_commented.m; reran code. Copy and pasted outcome sentences from matlab console, but did not directly compare values when saw that they also did not match.
 
 # Step 3: Compare values
 ## Descriptive statistics
@@ -81,9 +81,7 @@ MATLAB OUTPUT (Code provided by authors): in the high self-control group, the pa
 
 MATLAB OUTPUT (Optional exclusions commented): in the high self-control group, the paths for taste and health were quite similar and became significantly greater than zero at approximately the same time (health: t = 72; taste: t = 66)
 
-MATLAB OUTPUT (Optional exclusions commented):     'n the high-self-control group, the paths for tastiness and healthfulness were quite similar and became significantly greater than zero at approximately the same time (healthfulness: t = 67; tastiness: t = 60).
-
-
+MATLAB OUTPUT (Optional exclusions commented): in the high-self-control group, the paths for tastiness and healthfulness were quite similar and became significantly greater than zero at approximately the same time (healthfulness: t = 67; tastiness: t = 60).
 
 ```{r}
 ## Original provided code
@@ -134,7 +132,7 @@ MATLAB OUTPUT (Code provided by authors): The normalized time at which taste and
 
 MATLAB OUTPUT (Optional exclusions commented): The normalized time at which taste and health became significant did not differ for high self-control subjects (mean health: t = 74.30; mean taste: t = 69.00; mean difference = -6.80; t(9)=-1.67, p=0.06, one-tailed)
 
-MATLAB OUTPUT (Corrected code):     'The normalized time at which tastiness and healthfulness became significant did not differ significantly for high-self-control subjects (mean healthfulness: t = 69.50; mean tastiness: t = 68.55; mean difference = -2.9, t(9) = -0.46, p = 0.33 (one-tailed), 
+MATLAB OUTPUT (Corrected code): The normalized time at which tastiness and healthfulness became significant did not differ significantly for high-self-control subjects (mean healthfulness: t = 69.50; mean tastiness: t = 68.55; mean difference = -2.9, t(9) = -0.46, p = 0.33 (one-tailed)
 
 
 ```{r}
@@ -171,7 +169,7 @@ MATLAB OUTPUT (Code provided by authors): but they were significantly different 
 
 MATLAB OUPUT (Optional exclusions commented): but they were significantly different in the low self-control group (mean health: t = 84.50; mean taste: t = 67.35; mean difference = -15.70, t(9)=-2.84, p=0.01, one-tailed).
 
-MATLAB OUTPUT (Corrected code): but they were significantly different in the low-self-control group (mean healthfulness: t = 81.22; mean tastiness: t = 61.35; mean difference = -16), t(8) = -2.5, p = 0.02 (one-tailed)'
+MATLAB OUTPUT (Corrected code): but they were significantly different in the low-self-control group (mean healthfulness: t = 81.22; mean tastiness: t = 61.35; mean difference = -16), t(8) = -2.5, p = 0.02 (one-tailed)
 
 
 ```{r}
